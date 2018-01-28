@@ -29,6 +29,7 @@ if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
         $col[] = "phone";                       $val[] = $_REQUEST['phone'];
         $col[] = "arsa";                        $val[] = $_REQUEST['arsa'];
         $col[] = "uid";                         $val[] = $_SESSION["user_id"];
+        $col[] = "is_edit";                     $val[] = 1;
 
 /////////////////// UPDATE //////////////////////
 if($objcms->update_img('requiries', $col, $val,'id', $_REQUEST['id'], $path, $field))
@@ -72,7 +73,7 @@ $objcms->tep_draw_message("Successfully Updated.", "success");
 
 
 if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
-    $res = $objcms->SELECT_QUERY("SELECT * FROM users WHERE id=" . $_REQUEST['id']);
+    $res = $objcms->SELECT_QUERY("SELECT * FROM requiries WHERE id=" . $_REQUEST['id']);
 
     $title = $res[0]['title'];
     $subject = $res[0]['subject'];

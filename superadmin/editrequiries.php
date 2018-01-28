@@ -70,7 +70,7 @@ $objcms->tep_draw_message("Successfully Updated.", "success");
 
 
 if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
-    $res = $objcms->SELECT_QUERY("SELECT * FROM users WHERE id=" . $_REQUEST['id']);
+    $res = $objcms->SELECT_QUERY("SELECT * FROM requiries WHERE id=" . $_REQUEST['id']);
 
     $title = $res[0]['title'];
     $subject = $res[0]['subject'];
@@ -81,7 +81,11 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
 
 }
 
+if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
+    $col[] = "is_edit";                 $val[] = 0;
 
+    $objcms->update_img('requiries', $col, $val, 'id', $_REQUEST['id'], $path, $field);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

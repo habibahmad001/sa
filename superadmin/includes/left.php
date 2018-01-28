@@ -22,17 +22,28 @@
                       <li><a href="users.php">User Management</a></li>
                     </ul>
                   </li>
-                <li><a><i class="fa fa-clone"></i>Rquiries <span class="fa fa-chevron-down"></span></a>
+              <li><a><i class="fa fa-clone"></i>Rquiries <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                       <li><a href="requiries.php">Requiries From Buyers</a></li>
+                   </ul>
+              </li>
+                <li><a><i class="fa fa-cog"></i>Realestate <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="requiries.php">Requiries Management</a></li>
+                        <li><a href="realestate.php">Realestate Listings</a></li>
                     </ul>
                 </li>
-                  <li><a><i class="fa fa-cog"></i>Settings <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-cog"></i>Logs <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <!--<li><a href="settinglisting.php">Settings Listing</a></li>-->
-                        <li><a href="logout.php">Logout</a></li>
+                        <li><a href="logrealestate.php">Realestate Listings</a></li>
+                        <li><a href="logrequiries.php">Requiries Listings</a></li>
                     </ul>
-                  </li>
+                </li>
+              <li><a><i class="fa fa-cog"></i>Settings <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <!--<li><a href="settinglisting.php">Settings Listing</a></li>-->
+                    <li><a href="logout.php">Logout</a></li>
+                </ul>
+              </li>
                   <!--li><a><i class="fa fa-clone"></i>Claim <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="process.php">Claim Listing</a></li> 
