@@ -23,26 +23,25 @@ if(isset($_REQUEST['submit']))
 if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
 {
 
-        //$col[] = "social_id";                   $val[] = $_REQUEST['social_id'];
-        $col[] = "name";                        $val[] = $_REQUEST['name'];
+        $col[] = "Adınız";                      $val[] = $_REQUEST['Adınız'];
+        $col[] = "MinFiyat";                    $val[] = $_REQUEST['MinFiyat'];
         $col[] = "email";                       $val[] = $_REQUEST['email'];
         $col[] = "phone";                       $val[] = $_REQUEST['phone'];
-        $col[] = "username";                    $val[] = $_REQUEST['username'];
-        $col[] = "gender";                      $val[] = $_REQUEST['gender'];
-        //$col[] = "api_key";                     $val[] = $_REQUEST['api_key'];
-        $col[] = "created_at";                  $val[] = date("Y-m-d h:i:s", strtotime($_REQUEST['created_at']));
-        //$col[] = "license_number";              $val[] = $_REQUEST['license_number'];
-        //$col[] = "reg_number";                  $val[] = $_REQUEST['reg_number'];
-        $col[] = "dob";                         $val[] = date("Y-m-d h:i:s", strtotime($_REQUEST['dob']));
-        //$col[] = "vehicle";                     $val[] = $_REQUEST['vehicle'];
-        //$col[] = "points";                      $val[] = $_REQUEST['points'];
-        //$col[] = "km_driven";                   $val[] = $_REQUEST['km_driven'];
-        //$col[] = "violations";                  $val[] = $_REQUEST['violations'];
-        //$col[] = "pdo_id";                      $val[] = $_REQUEST['pdo_id'];
+        $col[] = "Seçiniz";                     $val[] = $_REQUEST['Seçiniz'];
+        $col[] = "Soyadınız";                   $val[] = $_REQUEST['Soyadınız'];
+        $col[] = "MaxFiyat";                    $val[] = $_REQUEST['MaxFiyat'];
+        $col[] = "İlçe";                        $val[] = $_REQUEST['İlçe'];
+        $col[] = "MinAlan";                     $val[] = $_REQUEST['MinAlan'];
+        $col[] = "Mahalle";                     $val[] = $_REQUEST['Mahalle'];
+        $col[] = "CepTelefonu";                 $val[] = $_REQUEST['CepTelefonu'];
+        $col[] = "MaxAlan";                     $val[] = $_REQUEST['MaxAlan'];
+        $col[] = "Açıklama";                    $val[] = $_REQUEST['Açıklama'];
+        $col[] = "ArsaTürü";                    $val[] = $_REQUEST['ArsaTürü'];
+        $col[] = "ArsaTipi";                    $val[] = $_REQUEST['ArsaTipi'];
 
 
 /////////////////// UPDATE //////////////////////
-if($objcms->update_img('users', $col, $val,'id', $_REQUEST['id'], $path, $field))
+if($objcms->update_img('realesteate', $col, $val,'id', $_REQUEST['id'], $path, $field))
 {
 	header('Location: '.$_SERVER['PHP_SELF'].'?msg=updated&e=1&id='.$_REQUEST['id']);
 }
@@ -55,25 +54,24 @@ else
 
 if(isset($_REQUEST['submit']) && $_REQUEST['e'] != 1)
 {
-		//$col[] = "social_id";                   $val[] = $_REQUEST['social_id'];
-		$col[] = "name";                        $val[] = $_REQUEST['name'];
-		$col[] = "email";                       $val[] = $_REQUEST['email'];
-		$col[] = "phone";                       $val[] = $_REQUEST['phone'];
-		$col[] = "username";                    $val[] = $_REQUEST['username'];
-        $col[] = "gender";                      $val[] = $_REQUEST['gender'];
-        //$col[] = "api_key";                     $val[] = $_REQUEST['api_key'];
-        $col[] = "created_at";                  $val[] = date("Y-m-d h:i:s", strtotime($_REQUEST['created_at']));
-        //$col[] = "license_number";              $val[] = $_REQUEST['license_number'];
-        //$col[] = "reg_number";                  $val[] = $_REQUEST['reg_number'];
-        $col[] = "dob";                         $val[] = date("Y-m-d h:i:s", strtotime($_REQUEST['dob']));
-        //$col[] = "vehicle";                     $val[] = $_REQUEST['vehicle'];
-        //$col[] = "points";                      $val[] = $_REQUEST['points'];
-        //$col[] = "km_driven";                   $val[] = $_REQUEST['km_driven'];
-        //$col[] = "violations";                  $val[] = $_REQUEST['violations'];
-        //$col[] = "pdo_id";                      $val[] = $_REQUEST['pdo_id'];
+        $col[] = "Adınız";                      $val[] = $_REQUEST['Adınız'];
+        $col[] = "MinFiyat";                    $val[] = $_REQUEST['MinFiyat'];
+        $col[] = "email";                       $val[] = $_REQUEST['email'];
+        $col[] = "phone";                       $val[] = $_REQUEST['phone'];
+        $col[] = "Seçiniz";                     $val[] = $_REQUEST['Seçiniz'];
+        $col[] = "Soyadınız";                   $val[] = $_REQUEST['Soyadınız'];
+        $col[] = "MaxFiyat";                    $val[] = $_REQUEST['MaxFiyat'];
+        $col[] = "İlçe";                        $val[] = $_REQUEST['İlçe'];
+        $col[] = "MinAlan";                     $val[] = $_REQUEST['MinAlan'];
+        $col[] = "Mahalle";                     $val[] = $_REQUEST['Mahalle'];
+        $col[] = "CepTelefonu";                 $val[] = $_REQUEST['CepTelefonu'];
+        $col[] = "MaxAlan";                     $val[] = $_REQUEST['MaxAlan'];
+        $col[] = "Açıklama";                    $val[] = $_REQUEST['Açıklama'];
+        $col[] = "ArsaTürü";                    $val[] = $_REQUEST['ArsaTürü'];
+        $col[] = "ArsaTipi";                    $val[] = $_REQUEST['ArsaTipi'];
 
         /////////////////// INSERT //////////////////////
-		if($ins_id = $objcms->insert_new_with_id('users',$col,$val))
+		if($ins_id = $objcms->insert_new_with_id('realesteate',$col,$val))
 		{
 			header('Location: '.$_SERVER['PHP_SELF'].'?msg=inserted');
 		}
@@ -92,24 +90,23 @@ $objcms->tep_draw_message("Successfully Updated.", "success");
 
 
 if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
-    $res = $objcms->SELECT_QUERY("SELECT * FROM users WHERE id=" . $_REQUEST['id']);
+    $res = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE id=" . $_REQUEST['id']);
 
-    //$social_id = $res[0]['social_id'];
-    $name = $res[0]['name'];
+    $Adınız = $res[0]['Adınız'];
+    $MinFiyat = $res[0]['MinFiyat'];
     $email = $res[0]['email'];
     $phone = $res[0]['phone'];
-    $username = $res[0]['username'];
-    $gender = $res[0]['gender'];
-    //$api_key = $res[0]['api_key'];
-    $created_at = $res[0]['created_at'];
-    //$license_number = $res[0]['license_number'];
-    //$reg_number = $res[0]['reg_number'];
-    $dob = $res[0]['dob'];
-    //$vehicle = $res[0]['vehicle'];
-    //$points = $res[0]['points'];
-    //$km_driven = $res[0]['km_driven'];
-    //$violations = $res[0]['violations'];
-    //$pdo_id = $res[0]['pdo_id'];
+    $Seçiniz = $res[0]['Seçiniz'];
+    $Soyadınız = $res[0]['Soyadınız'];
+    $MaxFiyat = $res[0]['MaxFiyat'];
+    $İlçe = $res[0]['İlçe'];
+    $MinAlan = $res[0]['MinAlan'];
+    $Mahalle = $res[0]['Mahalle'];
+    $CepTelefonu = $res[0]['CepTelefonu'];
+    $MaxAlan = $res[0]['MaxAlan'];
+    $Açıklama = $res[0]['Açıklama'];
+    $ArsaTürü = $res[0]['ArsaTürü'];
+    $ArsaTipi = $res[0]['ArsaTipi'];
 }
 
 
@@ -123,7 +120,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  
-    <title>Super Admin :: Add User</title>
+    <title>Super Admin :: Add Realestate Listing</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -183,65 +180,65 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                     <form id="frm" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Name<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Adınız<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-right" name="name" id="name" placeholder="Name" value="<?php echo $name; ?>" type="text">
+                            <input class="form-control has-feedback-right" name="Adınız" id="Adınız" placeholder="Adınız" value="<?php echo $Adınız; ?>" type="text">
 
                         </div>
                       </div>
-                      <!--<div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Social ID<span class="required">*</span>
+                      <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Min. Fiyat<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" name="social_id" id="social_id" placeholder="Social ID" value="<?php /*echo $social_id; */?>" type="text" readonly>
+                                <input class="form-control has-feedback-right" name="MinFiyat" id="Min. Fiyat" placeholder="Social ID" value="<?php echo $social_id; ?>" type="text" readonly>
 
                             </div>
-                      </div>-->
+                      </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Max. Fiyat <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input class="form-control" placeholder="Email" name="email" id="email" value="<?php echo $email; ?>" type="text">
+                        <input class="form-control" placeholder="Max. Fiyat" name="MaxFiyat" id="MaxFiyat" value="<?php echo $MaxFiyat; ?>" type="text">
 
                       </div>
                       </div>
                       
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Phone <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-right" placeholder="Phone" name="phone" value="<?php echo $phone; ?>" id="phone" type="text">
+                            <input class="form-control has-feedback-right" placeholder="Email" name="email" value="<?php echo $email; ?>" id="email" type="text">
 
                         </div>
                       </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">User Name <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Phone <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" placeholder="User Name" name="username" value="<?php echo $username; ?>" id="username" type="text">
+                                <input class="form-control has-feedback-right" placeholder="Phone" name="phone" value="<?php echo $phone; ?>" id="phone" type="text">
 
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Gender <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Seçiniz <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" placeholder="Gender" name="gender" value="<?php echo $gender; ?>" id="gender" type="text">
+                                <input class="form-control has-feedback-right" placeholder="Seçiniz" name="Seçiniz" value="<?php echo $Seçiniz; ?>" id="Seçiniz" type="text">
 
                             </div>
                         </div>
 
-                        <!--<div class="form-group">
+                        <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Api Key <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" placeholder="Api Key" name="api_key" value="<?php /*echo $api_key; */?>" id="api_key" type="text" readonly>
+                                <input class="form-control has-feedback-right" placeholder="Api Key" name="api_key" value="<?php echo $api_key; ?>" id="api_key" type="text" readonly>
 
                             </div>
-                        </div>-->
+                        </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Created <span class="required">*</span>

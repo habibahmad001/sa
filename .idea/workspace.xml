@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d3f4eb8-4147-41b3-94bb-2de92dc54459" name="Default" comment="" />
+    <list default="true" id="1d3f4eb8-4147-41b3-94bb-2de92dc54459" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/user/users.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/user/editusers.php" afterPath="$PROJECT_DIR$/user/editreal.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/includes/left.php" afterPath="$PROJECT_DIR$/user/includes/left.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,57 +18,36 @@
       <file leaf-file-name="left.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/includes/left.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="218">
+              <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/index.php">
+      <file leaf-file-name="realestate.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/realestate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="306">
+              <caret line="119" column="56" lean-forward="false" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
               <folding>
-                <marker date="1517108553542" expanded="true" signature="329:343" ph="SELECT * FRO... admin" />
-                <marker date="1517108553542" expanded="true" signature="329:379" ph="SELECT * FRO... users" />
+                <element signature="e#3694#3700#0#HTML" expanded="true" />
+                <element signature="e#3700#3706#0#HTML" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1517147038035" expanded="true" signature="566:601" ph="SELECT * FRO... realesteate" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requiries.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/requiries.php">
+      <file leaf-file-name="editreal.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/user/editreal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1080">
-              <caret line="24" column="86" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="86" />
+            <state relative-caret-position="360">
+              <caret line="230" column="34" lean-forward="true" selection-start-line="230" selection-start-column="34" selection-end-line="230" selection-end-column="34" />
               <folding>
-                <element signature="e#3633#3639#0#HTML" expanded="true" />
-                <marker date="1517105914206" expanded="true" signature="564:598" ph="SELECT * FRO... requiries" />
+                <marker date="1517149095139" expanded="true" signature="3944:3979" ph="SELECT * FRO... users" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editrequiries.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/editrequiries.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
-              <folding>
-                <marker date="1517108055306" expanded="true" signature="2494:2523" ph="SELECT * FRO... users" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/classes/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="38" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -131,13 +114,15 @@
         <option value="$PROJECT_DIR$/superadmin/users.php" />
         <option value="$PROJECT_DIR$/superadmin/editusers.php" />
         <option value="$PROJECT_DIR$/superadmin/requiries.php" />
-        <option value="$PROJECT_DIR$/user/includes/left.php" />
         <option value="$PROJECT_DIR$/user/requiries.php" />
         <option value="$PROJECT_DIR$/user/changepass.php" />
         <option value="$PROJECT_DIR$/user/editrequiries.php" />
         <option value="$PROJECT_DIR$/superadmin/editrequiries.php" />
         <option value="$PROJECT_DIR$/user/index.php" />
         <option value="$PROJECT_DIR$/classes/config.php" />
+        <option value="$PROJECT_DIR$/user/includes/left.php" />
+        <option value="$PROJECT_DIR$/user/realestate.php" />
+        <option value="$PROJECT_DIR$/user/editreal.php" />
       </list>
     </option>
   </component>
@@ -186,7 +171,13 @@
             <path>
               <item name="superadmin" type="b2602c69:ProjectViewProjectNode" />
               <item name="superadmin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="superadmin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="superadmin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="includes" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -234,7 +225,7 @@
       <workItem from="1516357839988" duration="9238000" />
       <workItem from="1516599308384" duration="2758000" />
       <workItem from="1516602579788" duration="3771000" />
-      <workItem from="1517095103155" duration="10363000" />
+      <workItem from="1517095103155" duration="16033000" />
     </task>
     <task id="LOCAL-00001" summary="Todays commit">
       <created>1516607104758</created>
@@ -289,7 +280,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96105000" />
+    <option name="totallyTimeSpent" value="101775000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
@@ -337,8 +328,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/addsetting.php" />
-    <entry file="file://$PROJECT_DIR$/admin/editusers.php" />
     <entry file="file://$PROJECT_DIR$/admin/includes/left.php" />
     <entry file="file://$PROJECT_DIR$/classes/config.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -668,27 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/requiries.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1080">
-          <caret line="24" column="86" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="86" />
-          <folding>
-            <element signature="e#3633#3639#0#HTML" expanded="true" />
-            <marker date="1517105914206" expanded="true" signature="564:598" ph="SELECT * FRO... requiries" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/editrequiries.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
-          <folding>
-            <marker date="1517108055306" expanded="true" signature="2494:2523" ph="SELECT * FRO... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/cms.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1191">
@@ -856,14 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/includes/left.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -875,11 +835,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/user/requiries.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1080">
+          <caret line="24" column="86" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="86" />
+          <folding>
+            <element signature="e#3633#3639#0#HTML" expanded="true" />
+            <marker date="1517105914206" expanded="true" signature="564:598" ph="SELECT * FRO... requiries" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/editrequiries.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+          <folding>
+            <marker date="1517108055306" expanded="true" signature="2494:2523" ph="SELECT * FRO... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/includes/left.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/realestate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="119" column="56" lean-forward="false" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
+          <folding>
+            <element signature="e#3694#3700#0#HTML" expanded="true" />
+            <element signature="e#3700#3706#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1517147038035" expanded="true" signature="566:601" ph="SELECT * FRO... realesteate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/editreal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="230" column="34" lean-forward="true" selection-start-line="230" selection-start-column="34" selection-end-line="230" selection-end-column="34" />
+          <folding>
+            <marker date="1517149095139" expanded="true" signature="3944:3979" ph="SELECT * FRO... users" />
+          </folding>
         </state>
       </provider>
     </entry>

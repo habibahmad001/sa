@@ -16,13 +16,13 @@ if(isset($_REQUEST['d']) && isset($_REQUEST['id']))
 	if($_REQUEST['d']=="1" && $_REQUEST['id']!=null)
 	{
 		/////////////////// DELETR //////////////////////
-		if($objcms->delete_img('users',$path,$field,'id',$_REQUEST['id']))
+		if($objcms->delete_img('realesteate',$path,$field,'id',$_REQUEST['id']))
 		header('Location: '.$_SERVER['PHP_SELF'].'?DI=1');
 		/////////////////// DELETR //////////////////////
 	}
 }
 
-$res = $objcms->SELECT_QUERY("SELECT * FROM users");
+$res = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE id=".$_SESSION["user_id"]);
 
 
 
@@ -38,7 +38,7 @@ $message = $objcms->tep_draw_message("Data is deleted !");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Super Admin :: Users Page</title>
+    <title>Super Admin :: Realesteate Listing Page</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -103,23 +103,23 @@ $message = $objcms->tep_draw_message("Data is deleted !");
                       <thead>
                         <tr>
                           <th>Sr #</th>	
-                          <th>Name</th>
+                          <th>Adınız</th>
                           <th>Email</th>
-                          <th>Phone Number</th>
-                          <th>Created Date</th>
-                          <th class="no-sort">Action&nbsp;&nbsp;<button type="button" class="btn btn-primary" onClick="javascript: window.location.href = 'editusers.php';">Add</button></th>
+                          <th>Soyadınız</th>
+                          <th>Cep Telefonu</th>
+                          <th class="no-sort">Action&nbsp;&nbsp;<button type="button" class="btn btn-primary" onClick="javascript: window.location.href = 'editreal.php';">Add</button></th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php if(count($res) > 0) { $cont = 0; foreach($res as $v) { $cont = $cont+1;?>
                         <tr>
                           <td><?php echo $cont;?></td>
-                          <td><?php echo $v["name"];?></td>
+                          <td><?php echo $v["Adınız"];?></td>
                           <td><?php echo $v["email"];?></td>
-                          <td><?php echo $v["phone"];?></td>
-                          <td><?php echo date("F j, Y", strtotime($v["created_at"]));?></td>
+                          <td><?php echo $v["Soyadınız"];?></td>
+                          <td><?php echo $v["CepTelefonu"];?></td>
                           <td style="width:200px !important;">
-                          		<a class="btn btn-app" href="editusers.php?e=1&id=<?php echo $v["id"];?>">
+                          		<a class="btn btn-app" href="editreal.php?e=1&id=<?php echo $v["id"];?>">
                                   <i class="fa fa-edit"></i> View/Edit
                                 </a>
                                 <a class="btn btn-app" href="<?php echo $_SERVER['PHP_SELF'];?>?d=1&id=<?php echo $v["id"];?>">

@@ -17,9 +17,14 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                <li><a><i class="fa fa-clone"></i>Rquiries <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-home"></i>Rquiries <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="requiries.php">Requiries Management</a></li>
+                        <li><a href="requiries.php">Requiries From Buyers</a></li>
+                    </ul>
+                </li>
+                <li><a><i class="fa fa-clone"></i>Realestate <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="realestate.php">Realestate Listings</a></li>
                     </ul>
                 </li>
                   <li><a><i class="fa fa-cog"></i>Settings <span class="fa fa-chevron-down"></span></a>
