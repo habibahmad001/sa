@@ -1,0 +1,1 @@
+[09-Jan-2018 11:04:46 UTC] PHP Fatal error:  Class 'Net_SMTP' not found in /home/siteadmin991/public_html/pdo/classes/Mail/smtp.php on line 366
