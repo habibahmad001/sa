@@ -102,22 +102,22 @@ $message = $objcms->tep_draw_message("Data is deleted !");
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap col-no-sort" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th>Sr #</th>	
-                          <th>Adınız</th>
-                          <th>Email</th>
-                          <th>Soyadınız</th>
-                          <th>Cep Telefonu</th>
+                          <th>Sr #</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Surname</th>
+                            <th>Mobile #</th>
                           <th class="no-sort">Action</th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php if(count($res) > 0) { $cont = 0; foreach($res as $v) { $cont = $cont+1;?>
                         <tr>
-                          <td><?php echo $cont;?></td>
-                          <td><?php echo $v["adn"];?></td>
-                          <td><?php echo $v["email"];?></td>
-                          <td><?php echo $v["soy"];?></td>
-                          <td><?php echo $v["cept"];?></td>
+                            <td><?php echo $cont;?></td>
+                            <td><?php echo $v["adn"];?></td>
+                            <td><?php echo $v["emsal"];?></td>
+                            <td><?php echo $v["soy"];?></td>
+                            <td><?php echo $v["cept"];?></td>
                           <td style="width:200px !important;">
                           		<a class="btn btn-app" href="editreal.php?e=1&id=<?php echo $v["id"];?>&vid=1">
                                   <i class="fa fa-edit"></i> View/Edit

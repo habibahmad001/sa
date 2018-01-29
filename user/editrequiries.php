@@ -191,7 +191,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Name<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-right" name="Name" id="Adınız" placeholder="Adınız" value="<?php echo $Adınız; ?>" type="text">
+                            <input class="form-control has-feedback-right" name="Adınız" id="Adınız" placeholder="Name" value="<?php echo $Adınız; ?>" type="text">
 
                         </div>
                       </div>
