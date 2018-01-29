@@ -19,18 +19,30 @@ $random = "r".(rand()%10000);
 //$pid = $_REQUEST['pid'];
 $sub_ind = $_REQUEST['sub'];
 if(isset($_REQUEST['submit']))
-{ 
+{
 if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
 {
 
-        $col[] = "title";                       $val[] = $_REQUEST['title'];
-        $col[] = "subject";                     $val[] = $_REQUEST['subject'];
+        $col[] = "adn";                         $val[] = $_REQUEST['Adınız'];
+        $col[] = "minf";                        $val[] = $_REQUEST['MinFiyat'];
         $col[] = "email";                       $val[] = $_REQUEST['email'];
         $col[] = "phone";                       $val[] = $_REQUEST['phone'];
-        $col[] = "arsa";                        $val[] = $_REQUEST['arsa'];
+        $col[] = "sec";                         $val[] = $_REQUEST['Seçiniz'];
+        $col[] = "soy";                         $val[] = $_REQUEST['Soyadınız'];
+        $col[] = "maxf";                        $val[] = $_REQUEST['MaxFiyat'];
+        $col[] = "ice";                         $val[] = $_REQUEST['İlçe'];
+        $col[] = "mina";                        $val[] = $_REQUEST['MinAlan'];
+        $col[] = "mah";                         $val[] = $_REQUEST['Mahalle'];
+        $col[] = "cept";                        $val[] = $_REQUEST['CepTelefonu'];
+        $col[] = "maxa";                        $val[] = $_REQUEST['MaxAlan'];
+        $col[] = "aci";                         $val[] = $_REQUEST['Açıklama'];
+        $col[] = "arstu";                       $val[] = $_REQUEST['ArsaTürü'];
+        $col[] = "arst";                        $val[] = $_REQUEST['ArsaTipi'];
+        $col[] = "is_edit";                     $val[] = 0;
+
 
 /////////////////// UPDATE //////////////////////
-if($objcms->update_img('requiries', $col, $val,'id', $_REQUEST['id'], $path, $field))
+if($objcms->update_img('realesteate', $col, $val,'id', $_REQUEST['id'], $path, $field))
 {
 	header('Location: '.$_SERVER['PHP_SELF'].'?msg=updated&e=1&id='.$_REQUEST['id']);
 }
@@ -43,20 +55,29 @@ else
 
 if(isset($_REQUEST['submit']) && $_REQUEST['e'] != 1)
 {
-        $col[] = "title";                       $val[] = $_REQUEST['title'];
-        $col[] = "subject";                     $val[] = $_REQUEST['subject'];
+        $col[] = "adn";                         $val[] = $_REQUEST['Adınız'];
+        $col[] = "minf";                        $val[] = $_REQUEST['MinFiyat'];
         $col[] = "email";                       $val[] = $_REQUEST['email'];
         $col[] = "phone";                       $val[] = $_REQUEST['phone'];
-        $col[] = "arsa";                        $val[] = $_REQUEST['arsa'];
-
+        $col[] = "sec";                         $val[] = $_REQUEST['Seçiniz'];
+        $col[] = "soy";                         $val[] = $_REQUEST['Soyadınız'];
+        $col[] = "maxf";                        $val[] = $_REQUEST['MaxFiyat'];
+        $col[] = "ice";                         $val[] = $_REQUEST['İlçe'];
+        $col[] = "mina";                        $val[] = $_REQUEST['MinAlan'];
+        $col[] = "mah";                         $val[] = $_REQUEST['Mahalle'];
+        $col[] = "cept";                        $val[] = $_REQUEST['CepTelefonu'];
+        $col[] = "maxa";                        $val[] = $_REQUEST['MaxAlan'];
+        $col[] = "aci";                         $val[] = $_REQUEST['Açıklama'];
+        $col[] = "arstu";                       $val[] = $_REQUEST['ArsaTürü'];
+        $col[] = "arst";                        $val[] = $_REQUEST['ArsaTipi'];
 
         /////////////////// INSERT //////////////////////
-		if($ins_id = $objcms->insert_new_with_id('requiries',$col,$val))
+		if($ins_id = $objcms->insert_with_zero('realesteate',$col,$val))
 		{
 			header('Location: '.$_SERVER['PHP_SELF'].'?msg=inserted');
 		}
 		else
-		{header("Refresh:0");}
+		{$objcms->tep_draw_message("Request failed!");}
 	    /////////////////// INSERT //////////////////////
 }
 
@@ -70,15 +91,23 @@ $objcms->tep_draw_message("Successfully Updated.", "success");
 
 
 if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
-    $res = $objcms->SELECT_QUERY("SELECT * FROM requiries WHERE id=" . $_REQUEST['id']);
+    $res = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE id=" . $_REQUEST['id']);
 
-    $title = $res[0]['title'];
-    $subject = $res[0]['subject'];
+    $Adınız = $res[0]['adn'];
+    $MinFiyat = $res[0]['minf'];
     $email = $res[0]['email'];
     $phone = $res[0]['phone'];
-    $arsa = $res[0]['arsa'];
-
-
+    $Seçiniz = $res[0]['sec'];
+    $Soyadınız = $res[0]['soy'];
+    $MaxFiyat = $res[0]['maxf'];
+    $İlçe = $res[0]['ice'];
+    $MinAlan = $res[0]['mina'];
+    $Mahalle = $res[0]['mah'];
+    $CepTelefonu = $res[0]['cept'];
+    $MaxAlan = $res[0]['maxa'];
+    $Açıklama = $res[0]['aci'];
+    $ArsaTürü = $res[0]['arstu'];
+    $ArsaTipi = $res[0]['arst'];
 }
 
 if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
@@ -96,7 +125,7 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  
-    <title>Super Admin :: Add User</title>
+    <title>Super Admin :: Add Requiries</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -119,11 +148,11 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-    <style>
-        select {
-            width: 100%;
-        }
-    </style>
+      <style>
+          select {
+              width: 100%;
+          }
+      </style>
   </head>
 
   <body class="nav-md">
@@ -160,54 +189,245 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
                     <br />
                     <form id="frm" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Adiniz<span class="required">*</span>
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Name<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-right" name="title" id="title" placeholder="Title" value="<?php echo $title; ?>" type="text">
+                            <input class="form-control has-feedback-right" name="Adınız" id="Adınız" placeholder="Name" value="<?php echo $Adınız; ?>" type="text">
 
                         </div>
                       </div>
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Soyadiniz <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input class="form-control" placeholder="Soyadiniz" name="subject" id="subject" value="<?php echo $subject; ?>" type="text">
-
-                      </div>
-                      </div>
-
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Min. Price<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Email" name="email" id="email" value="<?php echo $email; ?>" type="text">
+                                <input class="form-control has-feedback-right" name="MinFiyat" id="MinFiyat" placeholder="Min. Price" value="<?php echo $MinFiyat; ?>" type="text">
+
+                            </div>
+                      </div>
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Max. Price <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <input class="form-control" placeholder="Max. Price" name="MaxFiyat" id="MaxFiyat" value="<?php echo $MaxFiyat; ?>" type="text">
+
+                      </div>
+                      </div>
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input class="form-control has-feedback-right" placeholder="Email" name="email" value="<?php echo $email; ?>" id="email" type="text">
+
+                        </div>
+                      </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Phone <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input class="form-control has-feedback-right" placeholder="Phone" name="phone" value="<?php echo $phone; ?>" id="phone" type="text">
 
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cep Telefonu <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Choose City <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Cep Telefonu" name="phone" id="phone" value="<?php echo $phone; ?>" type="text">
+
+                                <select name="Seçiniz" id="Seçiniz" class="medium gfield_select bs-select-hidden" tabindex="11" aria-required="true" aria-invalid="false">
+                                    <option value="" data-parentcountry="turkiye">--- Choose City  ---</option>
+                                    <option value="ADANA" data-parentcountry="turkiye">ADANA</option>
+                                    <option value="ADIYAMAN" data-parentcountry="turkiye">ADIYAMAN</option>
+                                    <option value="AFYONKARAHİSAR" data-parentcountry="turkiye">AFYONKARAHİSAR</option>
+                                    <option value="AĞRI" data-parentcountry="turkiye">AĞRI</option>
+                                    <option value="AKSARAY" data-parentcountry="turkiye">AKSARAY</option>
+                                    <option value="AMASYA" data-parentcountry="turkiye">AMASYA</option>
+                                    <option value="ANKARA" data-parentcountry="turkiye">ANKARA</option>
+                                    <option value="ANTALYA" data-parentcountry="turkiye">ANTALYA</option>
+                                    <option value="ARDAHAN" data-parentcountry="turkiye">ARDAHAN</option>
+                                    <option value="ARTVİN" data-parentcountry="turkiye">ARTVİN</option>
+                                    <option value="AYDIN" data-parentcountry="turkiye">AYDIN</option>
+                                    <option value="BALIKESİR" data-parentcountry="turkiye">BALIKESİR</option>
+                                    <option value="BARTIN" data-parentcountry="turkiye">BARTIN</option>
+                                    <option value="BATMAN" data-parentcountry="turkiye">BATMAN</option>
+                                    <option value="BAYBURT" data-parentcountry="turkiye">BAYBURT</option>
+                                    <option value="BİLECİK" data-parentcountry="turkiye">BİLECİK</option>
+                                    <option value="BİNGÖL" data-parentcountry="turkiye">BİNGÖL</option>
+                                    <option value="BİTLİS" data-parentcountry="turkiye">BİTLİS</option>
+                                    <option value="BOLU" data-parentcountry="turkiye">BOLU</option>
+                                    <option value="BURDUR" data-parentcountry="turkiye">BURDUR</option>
+                                    <option value="BURSA" data-parentcountry="turkiye">BURSA</option>
+                                    <option value="ÇANAKKALE" data-parentcountry="turkiye">ÇANAKKALE</option>
+                                    <option value="ÇANKIRI" data-parentcountry="turkiye">ÇANKIRI</option>
+                                    <option value="ÇORUM" data-parentcountry="turkiye">ÇORUM</option>
+                                    <option value="DENİZLİ" data-parentcountry="turkiye">DENİZLİ</option>
+                                    <option value="DİYARBAKIR" data-parentcountry="turkiye">DİYARBAKIR</option>
+                                    <option value="DÜZCE" data-parentcountry="turkiye">DÜZCE</option>
+                                    <option value="EDİRNE" data-parentcountry="turkiye">EDİRNE</option>
+                                    <option value="ELAZIĞ" data-parentcountry="turkiye">ELAZIĞ</option>
+                                    <option value="ERZİNCAN" data-parentcountry="turkiye">ERZİNCAN</option>
+                                    <option value="ERZURUM" data-parentcountry="turkiye">ERZURUM</option>
+                                    <option value="ESKİŞEHİR" data-parentcountry="turkiye">ESKİŞEHİR</option>
+                                    <option value="GAZİANTEP" data-parentcountry="turkiye">GAZİANTEP</option>
+                                    <option value="GİRESUN" data-parentcountry="turkiye">GİRESUN</option>
+                                    <option value="GÜMÜŞHANE" data-parentcountry="turkiye">GÜMÜŞHANE</option>
+                                    <option value="HAKKARİ" data-parentcountry="turkiye">HAKKARİ</option>
+                                    <option value="HATAY" data-parentcountry="turkiye">HATAY</option>
+                                    <option value="IĞDIR" data-parentcountry="turkiye">IĞDIR</option>
+                                    <option value="ISPARTA" data-parentcountry="turkiye">ISPARTA</option>
+                                    <option value="İSTANBUL" data-parentcountry="turkiye">İSTANBUL</option>
+                                    <option value="İZMİR" data-parentcountry="turkiye">İZMİR</option>
+                                    <option value="KAHRAMANMARAŞ" data-parentcountry="turkiye">KAHRAMANMARAŞ</option>
+                                    <option value="KARABÜK" data-parentcountry="turkiye">KARABÜK</option>
+                                    <option value="KARAMAN" data-parentcountry="turkiye">KARAMAN</option>
+                                    <option value="KARS" data-parentcountry="turkiye">KARS</option>
+                                    <option value="KASTAMONU" data-parentcountry="turkiye">KASTAMONU</option>
+                                    <option value="KAYSERİ" data-parentcountry="turkiye">KAYSERİ</option>
+                                    <option value="KIRIKKALE" data-parentcountry="turkiye">KIRIKKALE</option>
+                                    <option value="KIRKLARELİ" data-parentcountry="turkiye">KIRKLARELİ</option>
+                                    <option value="KIRŞEHİR" data-parentcountry="turkiye">KIRŞEHİR</option>
+                                    <option value="KİLİS" data-parentcountry="turkiye">KİLİS</option>
+                                    <option value="KOCAELİ" data-parentcountry="turkiye">KOCAELİ</option>
+                                    <option value="KONYA" data-parentcountry="turkiye">KONYA</option>
+                                    <option value="KÜTAHYA" data-parentcountry="turkiye">KÜTAHYA</option>
+                                    <option value="MALATYA" data-parentcountry="turkiye">MALATYA</option>
+                                    <option value="MANİSA" data-parentcountry="turkiye">MANİSA</option>
+                                    <option value="MARDİN" data-parentcountry="turkiye">MARDİN</option>
+                                    <option value="MERSİN" data-parentcountry="turkiye">MERSİN</option>
+                                    <option value="MUĞLA" data-parentcountry="turkiye">MUĞLA</option>
+                                    <option value="MUŞ" data-parentcountry="turkiye">MUŞ</option>
+                                    <option value="NEVŞEHİR" data-parentcountry="turkiye">NEVŞEHİR</option>
+                                    <option value="NİĞDE" data-parentcountry="turkiye">NİĞDE</option>
+                                    <option value="ORDU" data-parentcountry="turkiye">ORDU</option>
+                                    <option value="OSMANİYE" data-parentcountry="turkiye">OSMANİYE</option>
+                                    <option value="RİZE" data-parentcountry="turkiye">RİZE</option>
+                                    <option value="SAKARYA" data-parentcountry="turkiye">SAKARYA</option>
+                                    <option value="SAMSUN" data-parentcountry="turkiye">SAMSUN</option>
+                                    <option value="SİİRT" data-parentcountry="turkiye">SİİRT</option>
+                                    <option value="SİNOP" data-parentcountry="turkiye">SİNOP</option>
+                                    <option value="SİVAS" data-parentcountry="turkiye">SİVAS</option>
+                                    <option value="ŞANLIURFA" data-parentcountry="turkiye">ŞANLIURFA</option>
+                                    <option value="ŞIRNAK" data-parentcountry="turkiye">ŞIRNAK</option>
+                                    <option value="TEKİRDAĞ" data-parentcountry="turkiye">TEKİRDAĞ</option>
+                                    <option value="TOKAT" data-parentcountry="turkiye">TOKAT</option>
+                                    <option value="TRABZON" data-parentcountry="turkiye">TRABZON</option>
+                                    <option value="TUNCELİ" data-parentcountry="turkiye">TUNCELİ</option>
+                                    <option value="UŞAK" data-parentcountry="turkiye">UŞAK</option>
+                                    <option value="VAN" data-parentcountry="turkiye">VAN</option>
+                                    <option value="YALOVA" data-parentcountry="turkiye">YALOVA</option>
+                                    <option value="YOZGAT" data-parentcountry="turkiye">YOZGAT</option>
+                                    <option value="ZONGULDAK" data-parentcountry="turkiye">ZONGULDAK</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Surname <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input class="form-control has-feedback-right" placeholder="Surname" name="Soyadınız" value="<?php echo $Soyadınız; ?>" id="Soyadınız" type="text">
 
                             </div>
                         </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Arsa Turu Seciniz <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <select name="arsa" id="arsa">
-                                <option value="">-- Select One --</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Choose Town <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
+                                <select name="İlçe" id="İlçe" class="medium gfield_select" tabindex="12" aria-required="true" aria-invalid="false">
+                                    <option value="all">-- Choose Town --</option>
+                                    <option value="" selected="selected" class="gf_placeholder">İlçe Seçiniz</option>
+
+                                </select>
+                            </div>
                         </div>
-                      </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Min. Land Area <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input class="form-control has-feedback-right" placeholder="Min. Land Area" name="MinAlan" value="<?php echo $MinAlan; ?>" id="MinAlan" type="text">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Max. Land Area <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input class="form-control has-feedback-right" placeholder="Max. Land Area" name="MaxAlan" value="<?php echo $MaxAlan; ?>" id="MaxAlan" type="text">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Choose Naighbourhood <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+
+                                <select name="Mahalle" id="Mahalle" class="medium gfield_select" tabindex="13" aria-required="true" aria-invalid="false">
+                                    <option value="-- Choose Naighbourhood --">-- Choose Naighbourhood --</option>
+                                    <option value="" selected="selected" class="gf_placeholder">Mahalle Seçiniz</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Mobile <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input class="form-control has-feedback-right" placeholder="Mobile" name="CepTelefonu" value="<?php echo $CepTelefonu; ?>" id="CepTelefonu" type="text">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Description <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input class="form-control has-feedback-right" placeholder="Description" name="Açıklama" value="<?php echo $Açıklama; ?>" id="Açıklama" type="text">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Type of Require <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+
+                                <select name="ArsaTürü" id="ArsaTürü" class="medium gfield_select" tabindex="5" aria-required="true" aria-invalid="false">
+                                    <option value="-- Type of Require --">-- Type of Require --</option>
+                                    <option value="34">Kiralık</option>
+                                    <option value="35">Satılık</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Estate Type <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <select name="ArsaTipi" id="ArsaTipi" class="medium gfield_select" tabindex="10" aria-required="true" aria-invalid="false">
+                                    <option value="--Estate Type --">-- Estate Type --</option>
+                                    <option value="" selected="selected" class="gf_placeholder">Arsa Tipi Seçiniz</option>
+                                    <option value="14476">A-Lejantlı</option>
+                                    <option value="14475">Ada</option>
+                                    <option value="14477">Bağ &amp; Bahçe</option>
+                                    <option value="14478">Depo &amp; Antrepo</option>
+                                    <option value="14479">Eğitim</option>
+                                    <option value="14480">Enerji Depolama</option>
+                                    <option value="14481">İmarlı - Konut</option>
+                                    <option value="14485">İmarlı - Sanayi</option>
+                                    <option value="14482">İmarlı - Ticari</option>
+                                    <option value="14483">İmarlı - Ticari + Konut</option>
+                                    <option value="14494">İmarlı - Toplu Konut</option>
+                                    <option value="14484">İmarlı - Turizm</option>
+                                    <option value="14486">Muhtelif</option>
+                                    <option value="14487">Özel Kullanım</option>
+                                    <option value="14488">Sağlık</option>
+                                    <option value="14489">Sera</option>
+                                    <option value="14490">Sit Alanı</option>
+                                    <option value="14491">Spor Alanı</option>
+                                    <option value="14492">Tarla</option>
+                                    <option value="90">Villa</option>
+                                    <option value="14493">Zeytinlik</option>
+                                </select>
 
 
+                            </div>
+                        </div>
 
                       
                       <div class="ln_solid"></div>

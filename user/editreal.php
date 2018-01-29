@@ -29,7 +29,6 @@ if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
         $col[] = "estatetype";                      $val[] = $_REQUEST['estatetype'];
         $col[] = "label";                           $val[] = $_REQUEST['label'];
         $col[] = "price";                           $val[] = $_REQUEST['price'];
-        $col[] = "photo";                           $val[] = $_REQUEST['photo'];
         $col[] = "m2";                              $val[] = $_REQUEST['m2'];
         $col[] = "swap";                            $val[] = $_REQUEST['swap'];
         $col[] = "craditavaibility";                $val[] = $_REQUEST['craditavaibility'];
@@ -44,6 +43,18 @@ if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
         $col[] = "neigbourhood";                    $val[] = $_REQUEST['neigbourhood'];
         $col[] = "uid";                             $val[] = $_SESSION["user_id"];
         $col[] = "is_edit";                         $val[] = 1;
+
+        if($_FILES['photo']['name'] != "")
+        {
+            if(upload_image('photo',$random,'0'))
+            {
+                $col[] = "photo";                     $val[] = $random."".$_FILES['photo']['name'];
+                $field[] = "photo";                   $path[] = "../images/uploads/";
+            } else {
+                $objcms->tep_draw_message("Fail To Upload The Thum Nail Image.");
+            }
+
+        }
 
 /////////////////// UPDATE //////////////////////
 if($objcms->update_img('requiries', $col, $val,'id', $_REQUEST['id'], $path, $field))
@@ -65,7 +76,6 @@ if(isset($_REQUEST['submit']) && $_REQUEST['e'] != 1)
         $col[] = "estatetype";                      $val[] = $_REQUEST['estatetype'];
         $col[] = "label";                           $val[] = $_REQUEST['label'];
         $col[] = "price";                           $val[] = $_REQUEST['price'];
-        $col[] = "photo";                           $val[] = $_REQUEST['photo'];
         $col[] = "m2";                              $val[] = $_REQUEST['m2'];
         $col[] = "swap";                            $val[] = $_REQUEST['swap'];
         $col[] = "craditavaibility";                $val[] = $_REQUEST['craditavaibility'];
@@ -79,16 +89,27 @@ if(isset($_REQUEST['submit']) && $_REQUEST['e'] != 1)
         $col[] = "town";                            $val[] = $_REQUEST['town'];
         $col[] = "neigbourhood";                    $val[] = $_REQUEST['neigbourhood'];
         $col[] = "uid";                             $val[] = $_SESSION["user_id"];
-        $col[] = "is_edit";                         $val[] = 1;
 
+        if($_FILES['photo']['name'] != "")
+        {
+            if(upload_image('photo',$random,'0'))
+            {
+                $col[] = "photo";          $val[] = $random."".$_FILES['photo']['name'];
+            } else {
+                $objcms->tep_draw_message("Some issue with image uploading.");
+            }
+
+        } else {
+            $objcms->tep_draw_message("Image path is empty.");
+        }
 
         /////////////////// INSERT //////////////////////
 		if($ins_id = $objcms->insert_new_with_id('requiries',$col,$val))
 		{
 			header('Location: '.$_SERVER['PHP_SELF'].'?msg=inserted');
-		}
-		else
-		{header("Refresh:0");}
+		} else {
+            $objcms->tep_draw_message("Request Failed.");
+        }
 	    /////////////////// INSERT //////////////////////
 }
 
@@ -124,6 +145,51 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
     $town = $res[0]['town'];
     $neigbourhood = $res[0]['neigbourhood'];
 
+
+}
+
+function upload_image($imagename,$prefix,$num)
+{
+
+    $uploaded_size = $_FILES[$imagename]['size'];
+    $uploaded_type = $_FILES[$imagename]['type'];
+    if($num == 0)
+        $target =  "../images/uploads/".$prefix."".$_FILES[$imagename]['name'];
+    $ok=1;
+
+    //This is our size condition
+    if ($uploaded_size > 350000)
+    {
+        //$ok=0;
+        //return false;
+    }
+
+    //This is our limit file type condition
+    if ($uploaded_type =="text/php")
+    {
+        return false;
+        $ok=0;
+    }
+
+    //Here we check that $ok was not set to 0 by an error
+    if ($ok==0)
+    {
+        return false;
+    }
+
+    //If everything is ok we try to upload it
+    else if($_FILES[$imagename]['name'] != null &&  $_FILES[$imagename]['name']!= "")
+    {
+        if(move_uploaded_file($_FILES[$imagename]['tmp_name'], $target))
+        {
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
 
@@ -164,6 +230,9 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
     <style>
         select, textarea {
             width: 100%;
+        }
+        #imgmar {
+            margin: 15px 0px;
         }
     </style>
   </head>
@@ -267,7 +336,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Label <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control" placeholder="Label" name="label" id="label" value="<?php echo $label; ?>" type="text">
+
                             <select name="label" id="label">
                                 <option value="">-- Select One --</option>
                                 <option value="Acil Satilik">Acil Satilik</option>
@@ -290,8 +359,10 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Imange <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Imange" name="photo" id="photo" value="<?php echo $photo; ?>" type="file">
-
+                                <input placeholder="Imange" name="photo" id="photo" value="<?php echo $photo; ?>" type="file">
+                                <?php if(isset($photo)) {?>
+                                    <img id="imgmar" src="<?php echo "../images/uploads/$photo";?>" width="250" />
+                                <?php } ?>
                             </div>
                         </div>
 
@@ -336,10 +407,10 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Katkarsilig <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kat-karsilig <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Katkarsilig" name="katkarsilig" id="katkarsilig" value="<?php echo $katkarsilig; ?>" type="text">
+                                <input class="form-control" placeholder="Kat-karsilig" name="katkarsilig" id="katkarsilig" value="<?php echo $katkarsilig; ?>" type="text">
 
                             </div>
                         </div>
@@ -347,7 +418,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Emsal <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Email" name="Emsal" id="emsal" value="<?php echo $emsal; ?>" type="text">
+                                <input class="form-control" placeholder="Email" name="emsal" id="emsal" value="<?php echo $emsal; ?>" type="text">
 
                             </div>
                         </div>

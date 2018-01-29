@@ -102,20 +102,20 @@ $message = $objcms->tep_draw_message("Data is deleted !");
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap col-no-sort" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th>Sr #</th>	
-                          <th>Name</th>
-                          <th>Email</th>
-                          <th>Phone</th>
+                          <th>Sr #</th>
+                            <th>Title</th>
+                            <th>Emsal</th>
+                            <th>Price</th>
                           <th class="no-sort">Action&nbsp;<!--&nbsp;<button type="button" class="btn btn-primary" onClick="javascript: window.location.href = 'editrequiries.php';">Add</button>--></th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php if(count($res) > 0) { $cont = 0; foreach($res as $v) { $cont = $cont+1;?>
                         <tr>
-                          <td><?php echo $cont;?></td>
-                          <td><?php echo $v["title"];?></td>
-                          <td><?php echo $v["email"];?></td>
-                          <td><?php echo $v["phone"];?></td>
+                            <td><?php echo $cont;?></td>
+                            <td><?php echo $v["title"];?></td>
+                            <td><?php echo $v["emsal"];?></td>
+                            <td><?php echo $v["price"];?></td>
                           <td style="width:200px !important;">
                           		<a class="btn btn-app" href="editrequiries.php?e=1&id=<?php echo $v["id"];?>&vid=1">
                                   <i class="fa fa-edit"></i> View/Edit
