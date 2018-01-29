@@ -16,13 +16,13 @@ if(isset($_REQUEST['d']) && isset($_REQUEST['id']))
 	if($_REQUEST['d']=="1" && $_REQUEST['id']!=null)
 	{
 		/////////////////// DELETR //////////////////////
-		if($objcms->delete_img('realesteate',$path,$field,'id',$_REQUEST['id']))
+		if($objcms->delete_img('requiries',$path,$field,'id',$_REQUEST['id']))
 		header('Location: '.$_SERVER['PHP_SELF'].'?DI=1');
 		/////////////////// DELETR //////////////////////
 	}
 }
 
-$res = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE uid=".$_SESSION["user_id"]);
+$res = $objcms->SELECT_QUERY("SELECT * FROM requiries WHERE uid=".$_SESSION["user_id"]);
 
 
 
@@ -38,7 +38,7 @@ $message = $objcms->tep_draw_message("Data is deleted !");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Super Admin :: Realesteate Listing Page</title>
+    <title>Super Admin :: Requiries Page</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -103,10 +103,9 @@ $message = $objcms->tep_draw_message("Data is deleted !");
                       <thead>
                         <tr>
                           <th>Sr #</th>	
-                          <th>Adınız</th>
-                          <th>Email</th>
-                          <th>Soyadınız</th>
-                          <th>Cep Telefonu</th>
+                          <th>Title</th>
+                          <th>Emsal</th>
+                          <th>Price</th>
                           <th class="no-sort">Action&nbsp;&nbsp;<button type="button" class="btn btn-primary" onClick="javascript: window.location.href = 'editreal.php';">Add</button></th>
                         </tr>
                       </thead>
@@ -114,10 +113,9 @@ $message = $objcms->tep_draw_message("Data is deleted !");
                       <?php if(count($res) > 0) { $cont = 0; foreach($res as $v) { $cont = $cont+1;?>
                         <tr>
                           <td><?php echo $cont;?></td>
-                          <td><?php echo $v["adn"];?></td>
-                          <td><?php echo $v["email"];?></td>
-                          <td><?php echo $v["soy"];?></td>
-                          <td><?php echo $v["cept"];?></td>
+                          <td><?php echo $v["title"];?></td>
+                          <td><?php echo $v["emsal"];?></td>
+                          <td><?php echo $v["price"];?></td>
                           <td style="width:200px !important;">
                           		<a class="btn btn-app" href="editreal.php?e=1&id=<?php echo $v["id"];?>">
                                   <i class="fa fa-edit"></i> View/Edit
@@ -132,7 +130,7 @@ $message = $objcms->tep_draw_message("Data is deleted !");
                         </tr>
                       <?php } } else { ?>
                       	<tr>
-                          <td colspan="6">No Client Found here !</td>
+                          <td colspan="6">No data Found here !</td>
                         </tr>
                       <?php }?>
                       </tbody>
