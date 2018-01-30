@@ -235,6 +235,7 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
         }
         #imgmar {
             margin: 15px 0px;
+            border-radius: 20px;
         }
     </style>
   </head>
