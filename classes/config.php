@@ -2,7 +2,7 @@
 //session_start();
 
 if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
-    error_reporting(1);
+    error_reporting(E_ALL);
     define("DBHOST","localhost",true);
     define("DBUSER","root",true);
     define("DBPASSWORD","123",true);
