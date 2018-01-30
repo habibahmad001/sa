@@ -1413,8 +1413,8 @@ function decryptItssl( $q ) {
 function insert_new($table,$col,$val)
 {
     ///////////// call logs /////////////
-    include_once("logs.php");
-    $objlogs = logs::getInstance();
+    /*include_once("logs.php");
+    $objlogs = logs::getInstance();*/
     ///////////// call logs /////////////
 
     $this->connectToDB();
@@ -1461,7 +1461,7 @@ function insert_new($table,$col,$val)
     $result = $this->dml($query);
 
     ///////////// call logs /////////////
-    if(LogLevel == 0) {
+    /*if(LogLevel == 0) {
         $objlogs->loging("All Logs", $query);
     } elseif(LogLevel == 1) {
         $objlogs->loging("Info", $query);
@@ -1471,7 +1471,7 @@ function insert_new($table,$col,$val)
         $objlogs->loging("Warn", $query);
     } elseif(LogLevel == 4) {
         $objlogs->loging("Error", $query);
-    }
+    }*/
     ///////////// call logs /////////////
 	}
 	$this->DBDisconnect();

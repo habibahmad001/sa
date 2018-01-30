@@ -233,6 +233,7 @@ function upload_image($imagename,$prefix,$num)
         }
         #imgmar {
             margin: 15px 0px;
+            border-radius: 20px;
         }
     </style>
   </head>
@@ -442,15 +443,23 @@ function upload_image($imagename,$prefix,$num)
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">City <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="City" name="city" id="city" value="<?php echo $city; ?>" type="text">
 
+                                <select name="city" id="city">
+                                    <option value="">-- Select One --</option>
+                                    <?php $city_res = $objcms->SELECT_QUERY("SELECT * FROM city"); foreach($city_res as $v) { ?>
+                                    <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Town <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Town" name="town" id="town" value="<?php echo $town; ?>" type="text">
+                                <select name="town" id="town">
+                                    <option value="" id="townop">-- Select One --</option>
+
+                                </select>
 
                             </div>
                         </div>
@@ -458,8 +467,11 @@ function upload_image($imagename,$prefix,$num)
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Neigbour Hood <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Neigbour Hood" name="neigbourhood" id="neigbourhood" value="<?php echo $neigbourhood; ?>" type="text">
 
+                                <select name="neigbourhood" id="neigbourhood">
+                                    <option value="" id="neigbourhoodop">-- Select One --</option>
+
+                                </select>
                             </div>
                         </div>
 
@@ -534,6 +546,21 @@ jQuery(document).ready(function(e) {
     jQuery('select#label').val("<?php echo $label;?>");
     jQuery('select#typeofrequiries').val("<?php echo $typeofrequiries;?>");
     jQuery('select#estatetype').val("<?php echo $estatetype;?>");
+
+    jQuery("#city").change(function () {
+        var opid = jQuery(this).val();
+        jQuery.get('ajax/town.php', { id: opid}, function(data){
+            jQuery("#townop").after(data);
+        });
+    });
+
+    jQuery("#town").change(function () {
+        var opid = jQuery(this).val();
+        jQuery.get('ajax/neabour.php', { id: opid}, function(data){
+            jQuery("#neigbourhoodop").after(data);
+        });
+    });
+
 });
 	
 </script>
