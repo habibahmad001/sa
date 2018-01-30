@@ -531,6 +531,9 @@ function upload_image($imagename,$prefix,$num)
 jQuery(document).ready(function(e) {
     //jQuery("input").removeAttr("disabled");
     jQuery('#errdiv').fadeOut(6000);
+    jQuery('select#label').val("<?php echo $label;?>");
+    jQuery('select#typeofrequiries').val("<?php echo $typeofrequiries;?>");
+    jQuery('select#estatetype').val("<?php echo $estatetype;?>");
 });
 	
 </script>
