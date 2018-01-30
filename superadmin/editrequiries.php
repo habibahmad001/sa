@@ -498,6 +498,11 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
 jQuery(document).ready(function(e) {
     //jQuery("input").removeAttr("disabled");
     jQuery('#errdiv').fadeOut(6000);
+    jQuery('select#ArsaTipi').val("<?php echo $ArsaTipi;?>");
+    jQuery('select#ArsaTürü').val("<?php echo $ArsaTürü;?>");
+    jQuery('select#Mahalle').val("<?php echo $Mahalle;?>");
+    jQuery('select#İlçe').val("<?php echo $İlçe;?>");
+    jQuery('select#Seçiniz').val("<?php echo $Seçiniz;?>");
 });
 	
 </script>
