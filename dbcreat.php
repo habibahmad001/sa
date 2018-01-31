@@ -44,8 +44,8 @@ function next_level($res_dbval, $level) {
 
     foreach($res_dbval as $ov) {
         $match_arr = return_matched_arrar($ov["name"], $level);
-        echo "<pre>" . print_r($match_arr) . "</pre>";
-        /*foreach($match_arr as $v) {
+        //echo "<pre>" . print_r($match_arr) . "</pre>";
+        foreach($match_arr as $v) {
             $res = $objcms->SELECT_QUERY("SELECT * FROM $tablename WHERE `name`='" . htmlentities($v,ENT_QUOTES) . "'");
             //echo "SELECT * FROM $tablename WHERE `name`='" . htmlentities($v,ENT_QUOTES) . "'<br />";
             if(!$res[0]) {
@@ -65,7 +65,7 @@ function next_level($res_dbval, $level) {
                     echo "not";
                 }
             }
-        }*/
+        }
     }
 
 
