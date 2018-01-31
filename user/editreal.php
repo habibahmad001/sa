@@ -457,8 +457,14 @@ function upload_image($imagename,$prefix,$num)
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                 <select name="town" id="town">
-                                    <option value="" id="townop">-- Select One --</option>
-
+                                    <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
+                                        <option value="">-- Select One --</option>
+                                        <?php $town_res = $objcms->SELECT_QUERY("SELECT * FROM town WHERE pid=$city"); foreach($town_res as $v) { ?>
+                                            <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                        <?php } ?>
+                                    <?php } else {?>
+                                        <option value="">-- Select One --</option>
+                                    <?php } ?>
                                 </select>
 
                             </div>
@@ -469,7 +475,14 @@ function upload_image($imagename,$prefix,$num)
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
                                 <select name="neigbourhood" id="neigbourhood">
-                                    <option value="" id="neigbourhoodop">-- Select One --</option>
+                                    <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
+                                        <option value="">-- Select One --</option>
+                                        <?php $nea_res = $objcms->SELECT_QUERY("SELECT * FROM neabour WHERE tid=$town"); foreach($nea_res as $v) { ?>
+                                            <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                        <?php } ?>
+                                    <?php } else {?>
+                                        <option value="">-- Select One --</option>
+                                    <?php } ?>
 
                                 </select>
                             </div>
@@ -546,18 +559,21 @@ jQuery(document).ready(function(e) {
     jQuery('select#label').val("<?php echo $label;?>");
     jQuery('select#typeofrequiries').val("<?php echo $typeofrequiries;?>");
     jQuery('select#estatetype').val("<?php echo $estatetype;?>");
+    jQuery('select#city').val("<?php echo $city;?>");
+    jQuery('select#town').val("<?php echo $town;?>");
+    jQuery('select#neigbourhood').val("<?php echo $neigbourhood;?>");
 
     jQuery("#city").change(function () {
         var opid = jQuery(this).val();
         jQuery.get('ajax/town.php', { id: opid}, function(data){
-            jQuery("#townop").after(data);
+            jQuery("#town").html(data);
         });
     });
 
     jQuery("#town").change(function () {
         var opid = jQuery(this).val();
         jQuery.get('ajax/neabour.php', { id: opid}, function(data){
-            jQuery("#neigbourhoodop").after(data);
+            jQuery("#neigbourhood").html(data);
         });
     });
 
