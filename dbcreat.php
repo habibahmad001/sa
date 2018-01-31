@@ -60,9 +60,9 @@ function next_level($res_dbval, $level) {
                 }
 
                 if($objcms->insert_new($tablename, $col, $val)) {
-                    echo "inserted";
+                    echo "inserted<br />";
                 } else {
-                    echo "not";
+                    echo "not<br />";
                 }
             }
         }
