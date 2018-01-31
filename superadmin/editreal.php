@@ -445,15 +445,29 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">City <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="City" name="city" id="city" value="<?php echo $city; ?>" type="text">
 
+                                <select name="city" id="city">
+                                    <option value="">-- Select One --</option>
+                                    <?php $city_res = $objcms->SELECT_QUERY("SELECT * FROM city"); foreach($city_res as $v) { ?>
+                                        <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Town <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Town" name="town" id="town" value="<?php echo $town; ?>" type="text">
+                                <select name="town" id="town">
+                                    <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
+                                        <option value="">-- Select One --</option>
+                                        <?php $town_res = $objcms->SELECT_QUERY("SELECT * FROM town WHERE pid=$city"); foreach($town_res as $v) { ?>
+                                            <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                        <?php } ?>
+                                    <?php } else {?>
+                                        <option value="">-- Select One --</option>
+                                    <?php } ?>
+                                </select>
 
                             </div>
                         </div>
@@ -461,8 +475,18 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Neigbour Hood <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Neigbour Hood" name="neigbourhood" id="neigbourhood" value="<?php echo $neigbourhood; ?>" type="text">
 
+                                <select name="neigbourhood" id="neigbourhood">
+                                    <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
+                                        <option value="">-- Select One --</option>
+                                        <?php $nea_res = $objcms->SELECT_QUERY("SELECT * FROM neabour WHERE tid=$town"); foreach($nea_res as $v) { ?>
+                                            <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                        <?php } ?>
+                                    <?php } else {?>
+                                        <option value="">-- Select One --</option>
+                                    <?php } ?>
+
+                                </select>
                             </div>
                         </div>
 
@@ -531,9 +555,30 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
   </body>
 </html>
 <script language='javascript'>
-jQuery(document).ready(function(e) {
-    //jQuery("input").removeAttr("disabled");
-    jQuery('#errdiv').fadeOut(6000);
-});
-	
+    jQuery(document).ready(function(e) {
+        //jQuery("input").removeAttr("disabled");
+        jQuery('#errdiv').fadeOut(6000);
+        jQuery('select#label').val("<?php echo $label;?>");
+        jQuery('select#typeofrequiries').val("<?php echo $typeofrequiries;?>");
+        jQuery('select#estatetype').val("<?php echo $estatetype;?>");
+        jQuery('select#city').val("<?php echo $city;?>");
+        jQuery('select#town').val("<?php echo $town;?>");
+        jQuery('select#neigbourhood').val("<?php echo $neigbourhood;?>");
+
+        jQuery("#city").change(function () {
+            var opid = jQuery(this).val();
+            jQuery.get('ajax/town.php', { id: opid}, function(data){
+                jQuery("#town").html(data);
+            });
+        });
+
+        jQuery("#town").change(function () {
+            var opid = jQuery(this).val();
+            jQuery.get('ajax/neabour.php', { id: opid}, function(data){
+                jQuery("#neigbourhood").html(data);
+            });
+        });
+
+    });
+
 </script>
