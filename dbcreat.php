@@ -1,5 +1,5 @@
 <?php
-ini_set('max_execution_time', 300000000000000000000);
+ini_set('max_execution_time', 300000000000);
 error_reporting(E_ALL);
 include_once("./classes/cms.php");
 $objcms = new cms();
@@ -60,9 +60,9 @@ function next_level($res_dbval, $level) {
                 }
 
                 if($objcms->insert_new($tablename, $col, $val)) {
-                    echo "inserted\n\r";
+                    echo "inserted<br />";
                 } else {
-                    echo "not\n\r";
+                    echo "not<br />";
                 }
             }
         }
