@@ -1,5 +1,5 @@
 <?php
-ini_set('max_execution_time', 300000000);
+ini_set('max_execution_time', 300000000000000000000);
 error_reporting(E_ALL);
 include_once("./classes/cms.php");
 $objcms = new cms();
@@ -60,9 +60,9 @@ function next_level($res_dbval, $level) {
                 }
 
                 if($objcms->insert_new($tablename, $col, $val)) {
-                    echo "inserted";
+                    echo "inserted\n\r";
                 } else {
-                    echo "not";
+                    echo "not\n\r";
                 }
             }
         }
@@ -76,7 +76,7 @@ function return_matched_arrar($keyval, $level) {
     $row1 = 1;
     $return_arr = array();
 
-    if (($handle = fopen("city.csv", "r")) !== FALSE) {
+    if (($handle = fopen("citylist.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $num = count($data);
             $row1++;
