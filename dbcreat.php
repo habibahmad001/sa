@@ -1,5 +1,5 @@
 <?php
-ini_set('max_execution_time', 300000000000);
+ini_set('max_execution_time', 30000000000);
 error_reporting(E_ALL);
 include_once("./classes/cms.php");
 $objcms = new cms();
