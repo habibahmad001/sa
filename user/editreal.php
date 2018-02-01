@@ -270,7 +270,7 @@ function upload_image($imagename,$prefix,$num)
 
                   <div class="x_content">
                     <br />
-                    <form id="frm" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                    <form id="frm" data-parsley-validate class="form-horizontal form-label-left" onsubmit="return validatefrm(new Array());" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Title<span class="required">*</span>
@@ -578,5 +578,29 @@ jQuery(document).ready(function(e) {
     });
 
 });
+
+function validatefrm(skip_arr) {
+    var msg = 1;
+    $( "input[type=\"text\"], textarea, select" ).each(function( index ) { //console.log(skip_arr);jQuery(this).attr("name")
+        if(!skip_arr.includes(jQuery(this).attr("name")) ) {
+            if (jQuery(this).val() == "") {
+                jQuery(this).css("border", "1px solid red");
+                msg = 2;
+            } else {
+                jQuery(this).css("border", "1px solid #ccc");
+                msg = 1;
+            }
+        } else {
+            console.log("This element is in Skip Array :" + skip_arr);
+        }
+    });
+
+    if(msg == 1) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
 	
 </script>
