@@ -272,235 +272,237 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
 
                   <div class="x_content">
                     <br />
-                    <form id="frm" data-parsley-validate class="form-horizontal form-label-left" onsubmit="return validatefrm(new Array());" method="post" enctype="multipart/form-data">
+                      <form id="frm" data-parsley-validate class="form-horizontal form-label-left" onsubmit="return validatefrm(new Array('label', 'swap', 'craditavaibility', 'bagari', 'deadstatus', 'katkarsilig', 'emsal', 'videourl', 'address'));" method="post" enctype="multipart/form-data">
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Title<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-right" name="title" id="title" placeholder="Title" value="<?php echo $title; ?>" type="text">
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Title<span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control has-feedback-right" name="title" id="title" placeholder="Title" value="<?php echo $title; ?>" type="text">
 
-                        </div>
-                      </div>
+                              </div>
+                          </div>
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Description <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <textarea name="description" id="description"><?php echo $description; ?></textarea>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Description <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <textarea name="description" id="description"><?php echo $description; ?></textarea>
 
-                      </div>
-                      </div>
+                              </div>
+                          </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Type Of Requiries <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <select name="typeofrequiries" id="typeofrequiries">
-                                    <option value="">-- Select One --</option>
-                                    <option value="Satilik">Satilik</option>
-                                    <option value="Kiralik">Kiralik</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Estate Type <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <select name="estatetype" id="estatetype" class="medium gfield_select" tabindex="10" aria-required="true" aria-invalid="false">
-                                    <option value="--Estate Type --">-- Estate Type --</option>
-                                    <option value="" selected="selected" class="gf_placeholder">Arsa Tipi Seçiniz</option>
-                                    <option value="14476">A-Lejantlı</option>
-                                    <option value="14475">Ada</option>
-                                    <option value="14477">Bağ &amp; Bahçe</option>
-                                    <option value="14478">Depo &amp; Antrepo</option>
-                                    <option value="14479">Eğitim</option>
-                                    <option value="14480">Enerji Depolama</option>
-                                    <option value="14481">İmarlı - Konut</option>
-                                    <option value="14485">İmarlı - Sanayi</option>
-                                    <option value="14482">İmarlı - Ticari</option>
-                                    <option value="14483">İmarlı - Ticari + Konut</option>
-                                    <option value="14494">İmarlı - Toplu Konut</option>
-                                    <option value="14484">İmarlı - Turizm</option>
-                                    <option value="14486">Muhtelif</option>
-                                    <option value="14487">Özel Kullanım</option>
-                                    <option value="14488">Sağlık</option>
-                                    <option value="14489">Sera</option>
-                                    <option value="14490">Sit Alanı</option>
-                                    <option value="14491">Spor Alanı</option>
-                                    <option value="14492">Tarla</option>
-                                    <option value="90">Villa</option>
-                                    <option value="14493">Zeytinlik</option>
-                                </select>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Type Of Requiries <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <select name="typeofrequiries" id="typeofrequiries">
+                                      <option value="">-- Select One --</option>
+                                      <option value="Satilik">Satilik</option>
+                                      <option value="Kiralik">Kiralik</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Estate Type <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <select name="estatetype" id="estatetype" class="medium gfield_select" tabindex="10" aria-required="true" aria-invalid="false">
+                                      <option value="--Estate Type --">-- Estate Type --</option>
+                                      <option value="" selected="selected" class="gf_placeholder">Arsa Tipi Seçiniz</option>
+                                      <option value="14476">A-Lejantlı</option>
+                                      <option value="14475">Ada</option>
+                                      <option value="14477">Bağ &amp; Bahçe</option>
+                                      <option value="14478">Depo &amp; Antrepo</option>
+                                      <option value="14479">Eğitim</option>
+                                      <option value="14480">Enerji Depolama</option>
+                                      <option value="14481">İmarlı - Konut</option>
+                                      <option value="14485">İmarlı - Sanayi</option>
+                                      <option value="14482">İmarlı - Ticari</option>
+                                      <option value="14483">İmarlı - Ticari + Konut</option>
+                                      <option value="14494">İmarlı - Toplu Konut</option>
+                                      <option value="14484">İmarlı - Turizm</option>
+                                      <option value="14486">Muhtelif</option>
+                                      <option value="14487">Özel Kullanım</option>
+                                      <option value="14488">Sağlık</option>
+                                      <option value="14489">Sera</option>
+                                      <option value="14490">Sit Alanı</option>
+                                      <option value="14491">Spor Alanı</option>
+                                      <option value="14492">Tarla</option>
+                                      <option value="90">Villa</option>
+                                      <option value="14493">Zeytinlik</option>
+                                  </select>
 
-                            </div>
-                        </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Label <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Label <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
-                            <select name="label" id="label">
-                                <option value="">-- Select One --</option>
-                                <option value="Acil Satilik">Acil Satilik</option>
-                                <option value="Okazyon Fiyat">Okazyon Fiyat</option>
-                                <option value="Takasa Acik">Takasa Acik</option>
-                            </select>
-                        </div>
-                      </div>
+                                  <select name="label" id="label">
+                                      <option value="">-- Select One --</option>
+                                      <option value="Acil Satilik">Acil Satilik</option>
+                                      <option value="Okazyon Fiyat">Okazyon Fiyat</option>
+                                      <option value="Takasa Acik">Takasa Acik</option>
+                                  </select>
+                              </div>
+                          </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Price <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Price" name="price" id="price" value="<?php echo $price; ?>" type="text">
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Price <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Price" name="price" id="price" value="<?php echo $price; ?>" type="text">
 
-                            </div>
-                        </div>
+                              </div>
+                          </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Imange <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input placeholder="Imange" name="photo" id="photo" value="<?php echo $photo; ?>" type="file">
-                                <?php if(isset($photo)) {?>
-                                    <img id="imgmar" src="<?php echo "../images/uploads/$photo";?>" width="250" />
-                                <?php } ?>
-                            </div>
-                        </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Imange <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input placeholder="Imange" name="photo" id="photo" value="<?php echo $photo; ?>" type="file">
+                                  <?php if(isset($photo)) {?>
+                                      <img id="imgmar" src="<?php echo "../images/uploads/$photo";?>" width="250" />
+                                  <?php } ?>
+                              </div>
+                          </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">M2 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="M2" name="m2" id="m2" value="<?php echo $m2; ?>" type="text">
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">M2 <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="M2" name="m2" id="m2" value="<?php echo $m2; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">swap <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="swap" name="swap" id="swap" value="<?php echo $swap; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">swap <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="swap" name="swap" id="swap" value="<?php echo $swap; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cradit Avaibility <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Cradit Avaibility" name="craditavaibility" id="craditavaibility" value="<?php echo $craditavaibility; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cradit Avaibility <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Cradit Avaibility" name="craditavaibility" id="craditavaibility" value="<?php echo $craditavaibility; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Bagari <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Bagari" name="bagari" id="bagari" value="<?php echo $bagari; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Bagari <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Bagari" name="bagari" id="bagari" value="<?php echo $bagari; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Dead Status <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Dead Status" name="deadstatus" id="deadstatus" value="<?php echo $deadstatus; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Dead Status <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Dead Status" name="deadstatus" id="deadstatus" value="<?php echo $deadstatus; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kat-karsilig <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Kat-karsilig" name="katkarsilig" id="katkarsilig" value="<?php echo $katkarsilig; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kat-karsilig <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Kat-karsilig" name="katkarsilig" id="katkarsilig" value="<?php echo $katkarsilig; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Emsal <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Email" name="emsal" id="emsal" value="<?php echo $emsal; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Emsal <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Email" name="emsal" id="emsal" value="<?php echo $emsal; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Video URL <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Video URL" name="videourl" id="videourl" value="<?php echo $videourl; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Video URL <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Video URL" name="videourl" id="videourl" value="<?php echo $videourl; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Address <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control" placeholder="Address" name="address" id="address" value="<?php echo $address; ?>" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Address <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <input class="form-control" placeholder="Address" name="address" id="address" value="<?php echo $address; ?>" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">City <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">City <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
-                                <select name="city" id="city">
-                                    <option value="">-- Select One --</option>
-                                    <?php $city_res = $objcms->SELECT_QUERY("SELECT * FROM city"); foreach($city_res as $v) { ?>
-                                        <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Town <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <select name="town" id="town">
-                                    <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
-                                        <option value="">-- Select One --</option>
-                                        <?php $town_res = $objcms->SELECT_QUERY("SELECT * FROM town WHERE pid=$city"); foreach($town_res as $v) { ?>
-                                            <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
-                                        <?php } ?>
-                                    <?php } else {?>
-                                        <option value="">-- Select One --</option>
-                                    <?php } ?>
-                                </select>
+                                  <select name="city" id="city">
+                                      <option value="">-- Select One --</option>
+                                      <?php $city_res = $objcms->SELECT_QUERY("SELECT * FROM city"); foreach($city_res as $v) { ?>
+                                          <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                      <?php } ?>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Town <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                  <select name="town" id="town">
+                                      <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
+                                          <option value="">-- Select One --</option>
+                                          <?php if($city != "") {?>
+                                              <?php $town_res = $objcms->SELECT_QUERY("SELECT * FROM town WHERE pid=$city"); foreach($town_res as $v) { ?>
+                                                  <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                              <?php } } ?>
+                                      <?php } else {?>
+                                          <option value="">-- Select One --</option>
+                                      <?php } ?>
+                                  </select>
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Neigbour Hood <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Neigbour Hood <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
-                                <select name="neigbourhood" id="neigbourhood">
-                                    <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
-                                        <option value="">-- Select One --</option>
-                                        <?php $nea_res = $objcms->SELECT_QUERY("SELECT * FROM neabour WHERE tid=$town"); foreach($nea_res as $v) { ?>
-                                            <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
-                                        <?php } ?>
-                                    <?php } else {?>
-                                        <option value="">-- Select One --</option>
-                                    <?php } ?>
+                                  <select name="neigbourhood" id="neigbourhood">
+                                      <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
+                                          <option value="">-- Select One --</option>
+                                          <?php if($town != "") {?>
+                                              <?php $nea_res = $objcms->SELECT_QUERY("SELECT * FROM neabour WHERE tid=$town"); foreach($nea_res as $v) { ?>
+                                                  <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
+                                              <?php } } ?>
+                                      <?php } else {?>
+                                          <option value="">-- Select One --</option>
+                                      <?php } ?>
 
-                                </select>
-                            </div>
-                        </div>
+                                  </select>
+                              </div>
+                          </div>
 
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input name="e" type="hidden" value="<?php if($_REQUEST["e"]) echo $_REQUEST["e"]; else echo 0;?>">
-                          <input name="id" type="hidden" value="<?php if($_REQUEST["id"]) echo $_REQUEST["id"];?>">
+                          <div class="ln_solid"></div>
+                          <div class="form-group">
+                              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                  <input name="e" type="hidden" value="<?php if($_REQUEST["e"]) echo $_REQUEST["e"]; else echo 0;?>">
+                                  <input name="id" type="hidden" value="<?php if($_REQUEST["id"]) echo $_REQUEST["id"];?>">
 
-                          <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
-                        </div>
-                      </div>
+                                  <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
+                              </div>
+                          </div>
 
-                    </form>
+                      </form>
                   </div>
                 </div>
               </div>
