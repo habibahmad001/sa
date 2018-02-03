@@ -25,6 +25,10 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"]))
             $col[] = "rmb";                       $val[] = 1;
 
             $objcms->update_img('admin', $col, $val, 'id', $result[0]['id'], $path, $field);
+        } else {
+            $col[] = "rmb";                       $val[] = 0;
+
+            $objcms->update_img('admin', $col, $val, 'id', $result[0]['id'], $path, $field);
         }
 
 
