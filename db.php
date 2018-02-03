@@ -4,30 +4,49 @@ error_reporting(E_ALL);
 include_once("./classes/cms.php");
 $objcms = new cms();
 
-$row = 1;
+/*$row = 1;
 
 if (($handle = fopen("city.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         echo "<p> $num fields in line $row: <br /></p>\n";
-        $row++;
+        $row++;*/
 
         /************** Insertion Logic *****************/
 
-            $col[] = "city";                    $val[] = $data[0];
+            /*$col[] = "city";                    $val[] = $data[0];
             $col[] = "town";                    $val[] = $data[1];
             $col[] = "neabour";                 $val[] = $data[2];
 
             $objcms->insert_new('temp',$col,$val);
-            unset($col);                            unset($val);
+            unset($col);*/                            unset($val);
 
         /************** Insertion Logic *****************/
-    }
+/*    }
     fclose($handle);
 }
-exit();
-/*$res = $objcms->SELECT_QUERY("SELECT * FROM city");
-next_level($res, 1);*/
+exit();*/
+
+$res = $objcms->SELECT_QUERY("SELECT * FROM temp");
+/************** Insertion Logic *****************/
+$res = $objcms->SELECT_QUERY("SELECT * FROM city WHERE `name`='" . $res[0]["city"] . "'");
+if(!$res[0]) {
+
+    $col[] = "name";                    $val[] = $data[0];
+
+    $objcms->insert_new('city',$col,$val);
+    unset($col);                            unset($val);
+}
+
+/************** Insertion Logic *****************/
+
+//exit();
+
+
+
+
+$res = $objcms->SELECT_QUERY("SELECT * FROM city");
+next_level($res, 1);
 $res1 = $objcms->SELECT_QUERY("SELECT * FROM town");
 next_level($res1, 2);
 
@@ -45,7 +64,7 @@ function next_level($res_dbval, $level) {
         $match_arr = return_matched_arrar($ov["name"], $level);
 
         foreach($match_arr as $v) {
-            $res = $objcms->SELECT_QUERY("SELECT * FROM $tablename WHERE `name`='" . htmlentities($v,ENT_QUOTES) . "'");
+            $res = $objcms->SELECT_QUERY("SELECT * FROM $tablename WHERE `name`='" . $v . "'");
 
             if(!$res[0]) {
                 unset($col);                unset($val);
@@ -72,24 +91,22 @@ function next_level($res_dbval, $level) {
 
 
 function return_matched_arrar($keyval, $level) {
-    $row1 = 1;
     $return_arr = array();
 
-    if (($handle = fopen("citylist.csv", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-            $num = count($data);
-            $row1++;
-            if($level == 1) {
-                $oldval = 0;
-            } else {
-                $oldval = 1;
-            }
-            if(htmlentities($data[$oldval],ENT_QUOTES) == $keyval) {
-                $return_arr[] = $data[$level];
-            }
+    $res = $objcms->SELECT_QUERY("SELECT * FROM temp");
+    foreach($res as $v) {
+        if($level == 1) {
+            $oldval = "city";
+            $getcol = "town";
+        } else {
+            $oldval = "town";
+            $getcol = "neabour";
         }
-        fclose($handle);
+        if($v[0][$oldval] == $keyval) {
+            $return_arr[] = $v[0][$getcol];
+        }
     }
+
     return $return_arr;
 }
 
