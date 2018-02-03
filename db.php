@@ -12,35 +12,36 @@ if (($handle = fopen("city.csv", "r")) !== FALSE) {
         echo "<p> $num fields in line $row: <br /></p>\n";
         $row++;*/
 
-        /************** Insertion Logic *****************/
+/************** Insertion Logic *****************/
 
-            /*$col[] = "city";                    $val[] = $data[0];
-            $col[] = "town";                    $val[] = $data[1];
-            $col[] = "neabour";                 $val[] = $data[2];
+/*$col[] = "city";                    $val[] = $data[0];
+$col[] = "town";                    $val[] = $data[1];
+$col[] = "neabour";                 $val[] = $data[2];
 
-            $objcms->insert_new('temp',$col,$val);
-            unset($col);*/                            unset($val);
+$objcms->insert_new('temp',$col,$val);
+unset($col);*/                            unset($val);
 
-        /************** Insertion Logic *****************/
+/************** Insertion Logic *****************/
 /*    }
     fclose($handle);
 }
 exit();*/
 
 $res = $objcms->SELECT_QUERY("SELECT * FROM temp");
-/************** Insertion Logic *****************/
-$res = $objcms->SELECT_QUERY("SELECT * FROM city WHERE `name`='" . $res[0]["city"] . "'");
-if(!$res[0]) {
+foreach($res as $rv) {
+    /************** Insertion Logic *****************/
+    $res = $objcms->SELECT_QUERY("SELECT * FROM city WHERE `name`='" . $rv["city"] . "'");
+    if(!$res[0]) {
 
-    $col[] = "name";                    $val[] = $data[0];
+        $col[] = "name";                    $val[] = $rv["city"];
 
-    $objcms->insert_new('city',$col,$val);
-    unset($col);                            unset($val);
+        $objcms->insert_new('city',$col,$val);
+        unset($col);                            unset($val);
+    }
+
+    /************** Insertion Logic *****************/
 }
-
-/************** Insertion Logic *****************/
-
-//exit();
+exit();
 
 
 
