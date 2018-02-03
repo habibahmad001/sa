@@ -270,7 +270,7 @@ function upload_image($imagename,$prefix,$num)
 
                   <div class="x_content">
                     <br />
-                    <form id="frm" data-parsley-validate class="form-horizontal form-label-left" onsubmit="return validatefrm(new Array());" method="post" enctype="multipart/form-data">
+                    <form id="frm" data-parsley-validate class="form-horizontal form-label-left" onsubmit="return validatefrm(new Array('label', 'swap', 'craditavaibility', 'bagari', 'deadstatus', 'katkarsilig', 'emsal', 'videourl', 'address'));" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Title<span class="required">*</span>
@@ -459,9 +459,10 @@ function upload_image($imagename,$prefix,$num)
                                 <select name="town" id="town">
                                     <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
                                         <option value="">-- Select One --</option>
+                                        <?php if($city != "") {?>
                                         <?php $town_res = $objcms->SELECT_QUERY("SELECT * FROM town WHERE pid=$city"); foreach($town_res as $v) { ?>
                                             <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
-                                        <?php } ?>
+                                        <?php } } ?>
                                     <?php } else {?>
                                         <option value="">-- Select One --</option>
                                     <?php } ?>
@@ -477,9 +478,10 @@ function upload_image($imagename,$prefix,$num)
                                 <select name="neigbourhood" id="neigbourhood">
                                     <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
                                         <option value="">-- Select One --</option>
+                                        <?php if($town != "") {?>
                                         <?php $nea_res = $objcms->SELECT_QUERY("SELECT * FROM neabour WHERE tid=$town"); foreach($nea_res as $v) { ?>
                                             <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
-                                        <?php } ?>
+                                        <?php } } ?>
                                     <?php } else {?>
                                         <option value="">-- Select One --</option>
                                     <?php } ?>
