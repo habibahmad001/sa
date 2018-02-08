@@ -1478,6 +1478,58 @@ function insert_new($table,$col,$val)
 	return $result;
 	//$this->insert_new("table_name","col","val");
 }
+function insert($table,$col,$val)
+{
+
+
+    $this->connectToDB();
+	if(sizeof($col) == 0 or sizeof($val) == 0)
+	$this->tep_draw_message_cms("Unable To Insert The Values Please Set The Value.");
+	else
+	{
+	$query ="INSERT INTO ";
+	$query .="`$table` ";
+	$query .="(";
+	$size = count($col);
+	$size = $size-1;
+	foreach ($col as $key=> $value)
+	{
+		$query .= "`$col[$key]`";
+		if ($key == $size)
+			echo "";
+		else
+			$query .= ",";
+	}
+	
+	$query .= ")";
+	$query .= " VALUES (";
+	
+	foreach ($val as $key=> $value)
+	{
+	if(!isset($val[$key]) or $val[$key] == "")
+	$query .= "NULL";
+	else
+	{
+	    $str = "$val[$key]";
+		$query .= "'";
+		$query .= $str;
+		$query .= "'";
+	}
+		if ($key == $size)
+			echo "";
+		else
+			$query .= ",";
+	}
+	$query .= ")";
+	//echo $query;
+    //exit($query); 
+    $result = $this->dml($query);
+
+	}
+	$this->DBDisconnect();
+	return $result;
+	//$this->insert_new("table_name","col","val");
+}
 ////////// insert with id /////////////////////////////
 function insert_new_with_id($table,$col,$val)
 {
