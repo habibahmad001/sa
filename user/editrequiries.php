@@ -18,34 +18,36 @@ $js=null;
 $random = "r".(rand()%10000);
 //$pid = $_REQUEST['pid'];
 $sub_ind = $_REQUEST['sub'];
+$res_fil = array();
 if(isset($_REQUEST['submit']))
 {
 if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
 {
 
-        $col[] = "adn";                         $val[] = $_REQUEST['Adınız'];
-        $col[] = "minf";                        $val[] = $_REQUEST['MinFiyat'];
-        $col[] = "email";                       $val[] = $_REQUEST['email'];
-        $col[] = "phone";                       $val[] = $_REQUEST['phone'];
-        $col[] = "sec";                         $val[] = $_REQUEST['Seçiniz'];
-        $col[] = "soy";                         $val[] = $_REQUEST['Soyadınız'];
-        $col[] = "maxf";                        $val[] = $_REQUEST['MaxFiyat'];
-        $col[] = "ice";                         $val[] = $_REQUEST['İlçe'];
-        $col[] = "mina";                        $val[] = $_REQUEST['MinAlan'];
-        $col[] = "mah";                         $val[] = $_REQUEST['Mahalle'];
-        $col[] = "cept";                        $val[] = $_REQUEST['CepTelefonu'];
-        $col[] = "maxa";                        $val[] = $_REQUEST['MaxAlan'];
-        $col[] = "aci";                         $val[] = $_REQUEST['Açıklama'];
-        $col[] = "arstu";                       $val[] = $_REQUEST['ArsaTürü'];
-        $col[] = "arst";                        $val[] = $_REQUEST['ArsaTipi'];
-        $col[] = "uid";                         $val[] = $_SESSION['user_id'];
-        $col[] = "is_edit";                     $val[] = 1;
+        $col[] = "name";                            $val[] = $_REQUEST['name'];
+        $col[] = "minprice";                        $val[] = $_REQUEST['minprice'];
+        $col[] = "email";                           $val[] = $_REQUEST['email'];
+        $col[] = "phone";                           $val[] = $_REQUEST['phone'];
+        $col[] = "city";                            $val[] = $_REQUEST['city'];
+        $col[] = "surname";                         $val[] = $_REQUEST['surname'];
+        $col[] = "maxprice";                        $val[] = $_REQUEST['maxprice'];
+        $col[] = "town";                            $val[] = $_REQUEST['town'];
+        $col[] = "minland";                         $val[] = $_REQUEST['minland'];
+        $col[] = "neigbourhood";                    $val[] = $_REQUEST['neigbourhood'];
+        $col[] = "mobile";                          $val[] = $_REQUEST['mobile'];
+        $col[] = "maxland";                         $val[] = $_REQUEST['maxland'];
+        $col[] = "description";                     $val[] = $_REQUEST['description'];
+        $col[] = "typeofrequire";                   $val[] = $_REQUEST['typeofrequire'];
+        $col[] = "estatetype";                      $val[] = $_REQUEST['estatetype'];
+        $col[] = "uid";                             $val[] = $_SESSION['user_id'];
+        $col[] = "is_edit";                         $val[] = 1;
 
 
 /////////////////// UPDATE //////////////////////
 if($objcms->update_img('realesteate', $col, $val,'id', $_REQUEST['id'], $path, $field))
 {
-	header('Location: '.$_SERVER['PHP_SELF'].'?msg=updated&e=1&id='.$_REQUEST['id']);
+    $res_fil = $objcms->SELECT_QUERY("SELECT * FROM requiries WHERE typeofrequiries='" . $_REQUEST['typeofrequire'] . "' and estatetype='" . $_REQUEST['estatetype'] . "' and city='" . $_REQUEST['city'] . "' and town='" . $_REQUEST['town'] ."' and neigbourhood='" . $_REQUEST['neigbourhood'] . "' and (m2 BETWEEN " . $_REQUEST['minland'] ." AND " . $_REQUEST['maxland'] . ") and (price BETWEEN " . $_REQUEST['minprice'] ." AND " . $_REQUEST['maxprice'].")");
+    //header('Location: '.$_SERVER['PHP_SELF'].'?msg=updated&e=1&id='.$_REQUEST['id']);
 }
 else
 {header("Refresh:0");}
@@ -56,27 +58,28 @@ else
 
 if(isset($_REQUEST['submit']) && $_REQUEST['e'] != 1)
 {
-        $col[] = "adn";                         $val[] = $_REQUEST['Adınız'];
-        $col[] = "minf";                        $val[] = $_REQUEST['MinFiyat'];
-        $col[] = "email";                       $val[] = $_REQUEST['email'];
-        $col[] = "phone";                       $val[] = $_REQUEST['phone'];
-        $col[] = "sec";                         $val[] = $_REQUEST['Seçiniz'];
-        $col[] = "soy";                         $val[] = $_REQUEST['Soyadınız'];
-        $col[] = "maxf";                        $val[] = $_REQUEST['MaxFiyat'];
-        $col[] = "ice";                         $val[] = $_REQUEST['İlçe'];
-        $col[] = "mina";                        $val[] = $_REQUEST['MinAlan'];
-        $col[] = "mah";                         $val[] = $_REQUEST['Mahalle'];
-        $col[] = "cept";                        $val[] = $_REQUEST['CepTelefonu'];
-        $col[] = "maxa";                        $val[] = $_REQUEST['MaxAlan'];
-        $col[] = "aci";                         $val[] = $_REQUEST['Açıklama'];
-        $col[] = "arstu";                       $val[] = $_REQUEST['ArsaTürü'];
-        $col[] = "arst";                        $val[] = $_REQUEST['ArsaTipi'];
-        $col[] = "uid";                         $val[] = $_SESSION['user_id'];
+        $col[] = "name";                            $val[] = $_REQUEST['name'];
+        $col[] = "minprice";                        $val[] = $_REQUEST['minprice'];
+        $col[] = "email";                           $val[] = $_REQUEST['email'];
+        $col[] = "phone";                           $val[] = $_REQUEST['phone'];
+        $col[] = "city";                            $val[] = $_REQUEST['city'];
+        $col[] = "surname";                         $val[] = $_REQUEST['surname'];
+        $col[] = "maxprice";                        $val[] = $_REQUEST['maxprice'];
+        $col[] = "town";                            $val[] = $_REQUEST['town'];
+        $col[] = "minland";                         $val[] = $_REQUEST['minland'];
+        $col[] = "neigbourhood";                    $val[] = $_REQUEST['neigbourhood'];
+        $col[] = "mobile";                          $val[] = $_REQUEST['mobile'];
+        $col[] = "maxland";                         $val[] = $_REQUEST['maxland'];
+        $col[] = "description";                     $val[] = $_REQUEST['description'];
+        $col[] = "typeofrequire";                   $val[] = $_REQUEST['typeofrequire'];
+        $col[] = "estatetype";                      $val[] = $_REQUEST['estatetype'];
+        $col[] = "uid";                             $val[] = $_SESSION['user_id'];
 
         /////////////////// INSERT //////////////////////
 		if($ins_id = $objcms->insert_with_zero('realesteate',$col,$val))
 		{
-			header('Location: '.$_SERVER['PHP_SELF'].'?msg=inserted');
+            $res_fil = $objcms->SELECT_QUERY("SELECT * FROM requiries WHERE typeofrequiries='" . $_REQUEST['typeofrequire'] . "' and estatetype='" . $_REQUEST['estatetype'] . "' and city='" . $_REQUEST['city'] . "' and town='" . $_REQUEST['town'] ."' and neigbourhood='" . $_REQUEST['neigbourhood'] . "' and (m2 BETWEEN " . $_REQUEST['minland'] ." AND " . $_REQUEST['maxland'] . ") and (price BETWEEN " . $_REQUEST['minprice'] ." AND " . $_REQUEST['maxprice'].")");
+			//header('Location: '.$_SERVER['PHP_SELF'].'?msg=inserted');
 		}
 		else
 		{$objcms->tep_draw_message("Request failed!");}
@@ -95,22 +98,24 @@ $objcms->tep_draw_message("Successfully Updated.", "success");
 if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
     $res = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE id=" . $_REQUEST['id']);
 
-    $Adınız = $res[0]['adn'];
-    $MinFiyat = $res[0]['minf'];
+    $name = $res[0]['name'];
+    $minprice = $res[0]['minprice'];
     $email = $res[0]['email'];
     $phone = $res[0]['phone'];
-    $Soyadınız = $res[0]['soy'];
-    $MaxFiyat = $res[0]['maxf'];
-    $MinAlan = $res[0]['mina'];
-    $town = $res[0]['İlçe'];
-    $city = $res[0]['sec'];
-    $neabour = $res[0]['Mahalle'];
-    $CepTelefonu = $res[0]['cept'];
-    $MaxAlan = $res[0]['maxa'];
-    $Açıklama = $res[0]['aci'];
-    $ArsaTürü = $res[0]['arstu'];
-    $ArsaTipi = $res[0]['arst'];
+    $surname = $res[0]['surname'];
+    $maxprice = $res[0]['maxprice'];
+    $minland = $res[0]['minland'];
+    $town = $res[0]['town'];
+    $city = $res[0]['city'];
+    $neigbourhood = $res[0]['neigbourhood'];
+    $mobile = $res[0]['mobile'];
+    $maxland = $res[0]['maxland'];
+    $description = $res[0]['description'];
+    $typeofrequire = $res[0]['typeofrequire'];
+    $estatetype = $res[0]['estatetype'];
 }
+
+
 
 
 ?>
@@ -185,13 +190,13 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
 
                   <div class="x_content">
                     <br />
-                    <form id="frm" data-parsley-validate onsubmit="return validatefrm(new Array('phone', 'CepTelefonu', 'Seçiniz', 'İlçe', 'Mahalle', 'MinAlan', 'MaxAlan', 'MaxFiyat', 'Açıklama'));" class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                    <form id="frm" data-parsley-validate onsubmit="return validatefrm(new Array('phone', 'mobile', 'city', 'town', 'neigbourhood', 'minland', 'maxland', 'maxprice', 'description'));" class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Name<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-right" name="Adınız" id="Adınız" placeholder="Name" value="<?php echo $Adınız; ?>" type="text">
+                            <input class="form-control has-feedback-right" name="name" id="name" placeholder="Name" value="<?php echo $name; ?>" type="text">
 
                         </div>
                       </div>
@@ -199,7 +204,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Surname <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" placeholder="Surname" name="Soyadınız" value="<?php echo $Soyadınız; ?>" id="Soyadınız" type="text">
+                                <input class="form-control has-feedback-right" placeholder="Surname" name="surname" value="<?php echo $surname; ?>" id="surname" type="text">
 
                             </div>
                         </div>
@@ -223,7 +228,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Mobile <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" placeholder="Mobile" name="CepTelefonu" value="<?php echo $CepTelefonu; ?>" id="CepTelefonu" type="text">
+                                <input class="form-control has-feedback-right" placeholder="Mobile" name="mobile" value="<?php echo $mobile; ?>" id="mobile" type="text">
 
                             </div>
                         </div>
@@ -232,7 +237,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
-                                <select name="ArsaTürü" id="ArsaTürü" class="medium gfield_select" tabindex="5" aria-required="true" aria-invalid="false">
+                                <select name="typeofrequire" id="typeofrequire" class="medium gfield_select" tabindex="5" aria-required="true" aria-invalid="false">
                                     <option value="">-- Type of Require --</option>
                                     <option value="34">Kiralık</option>
                                     <option value="35">Satılık</option>
@@ -243,9 +248,9 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Estate Type <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <select name="ArsaTipi" id="ArsaTipi" class="medium gfield_select" tabindex="10" aria-required="true" aria-invalid="false">
+                                <select name="estatetype" id="estatetype" class="medium gfield_select" tabindex="10" aria-required="true" aria-invalid="false">
                                     <option value="--Estate Type --">-- Estate Type --</option>
-                                    <option value="" selected="selected" class="gf_placeholder">Arsa Tipi Seçiniz</option>
+                                    <option value="14474" selected="selected" class="gf_placeholder">Arsa Tipi Seçiniz</option>
                                     <option value="14476">A-Lejantlı</option>
                                     <option value="14475">Ada</option>
                                     <option value="14477">Bağ &amp; Bahçe</option>
@@ -277,7 +282,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
-                                <select name="Seçiniz" id="city">
+                                <select name="city" id="city">
                                     <option value="">-- Select One --</option>
                                     <?php $city_res = $objcms->SELECT_QUERY("SELECT * FROM city"); foreach($city_res as $v) { ?>
                                         <option value="<?php echo $v["id"];?>"><?php echo $v["name"];?></option>
@@ -289,7 +294,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Town <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <select name="İlçe" id="town">
+                                <select name="town" id="town">
                                     <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
                                         <option value="">-- Select One --</option>
                                         <?php if($city != "") {?>
@@ -308,7 +313,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 
-                                <select name="Mahalle" id="neigbourhood">
+                                <select name="neigbourhood" id="neigbourhood">
                                     <?php if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1) { ?>
                                         <option value="">-- Select One --</option>
                                         <?php if($town != "") {?>
@@ -326,7 +331,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Min. Land Area <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" placeholder="Min. Land Area" name="MinAlan" value="<?php echo $MinAlan; ?>" id="MinAlan" type="text">
+                                <input class="form-control has-feedback-right" placeholder="Min. Land Area" name="minland" value="<?php echo $minland; ?>" id="minland" type="text">
 
                             </div>
                         </div>
@@ -334,7 +339,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Max. Land Area <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" placeholder="Max. Land Area" name="MaxAlan" value="<?php echo $MaxAlan; ?>" id="MaxAlan" type="text">
+                                <input class="form-control has-feedback-right" placeholder="Max. Land Area" name="maxland" value="<?php echo $maxland; ?>" id="maxland" type="text">
 
                             </div>
                         </div>
@@ -342,7 +347,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Min. Price<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-right" name="MinFiyat" id="MinFiyat" placeholder="Min. Price" value="<?php echo $MinFiyat; ?>" type="text">
+                                <input class="form-control has-feedback-right" name="minprice" id="minprice" placeholder="Min. Price" value="<?php echo $minprice; ?>" type="text">
 
                             </div>
                       </div>
@@ -350,7 +355,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Max. Price <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input class="form-control" placeholder="Max. Price" name="MaxFiyat" id="MaxFiyat" value="<?php echo $MaxFiyat; ?>" type="text">
+                        <input class="form-control" placeholder="Max. Price" name="maxprice" id="maxprice" value="<?php echo $maxprice; ?>" type="text">
 
                         </div>
                       </div>
@@ -359,7 +364,7 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name" style="text-align: right;">Description <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <textarea name="Açıklama" id="Açıklama"><?php echo $Açıklama; ?></textarea>
+                                <textarea name="description" id="description"><?php echo $description; ?></textarea>
                             </div>
                         </div>
 
@@ -377,12 +382,52 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
 
                     </form>
                   </div>
+
+
+                    <?php print_r($res_fil);?>
+                  <div class="x_content">
+
+                      <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap col-no-sort" cellspacing="0" width="100%">
+                          <thead>
+                          <tr>
+                              <th>Sr #</th>
+                              <th>Email</th>
+                              <th>M2</th>
+                              <th>Price</th>
+                              <th>Estate Type</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <?php if(count($res_fil) > 0) { $cont = 0; foreach($res_fil as $v) { $cont = $cont+1;?>
+                              <tr>
+                                  <td><?php echo $cont;?></td>
+                                  <td><?php echo $v["emsal"];?></td>
+                                  <td><?php echo $v["m2"];?></td>
+                                  <td><?php echo $v["price"];?></td>
+                                  <td><?php echo $v["estatetype"];?></td>
+                              </tr>
+                          <?php } } else { ?>
+                              <tr>
+                                  <td colspan="6">No Client Found here !</td>
+                              </tr>
+                          <?php }?>
+                          </tbody>
+                      </table>
+
+
+                  </div>
+
+
+
+
                 </div>
               </div>
             </div>
             
           </div>
         </div>
+
+
         <!-- /page content -->
 
         <?php include("includes/footer.php");?>
@@ -433,8 +478,8 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
 jQuery(document).ready(function(e) {
     //jQuery("input").removeAttr("disabled");
     jQuery('#errdiv').fadeOut(6000);
-    jQuery('select#ArsaTipi').val("<?php echo $ArsaTipi;?>");
-    jQuery('select#ArsaTürü').val("<?php echo $ArsaTürü;?>");
+    jQuery('select#estatetype').val("<?php echo $estatetype;?>");
+    jQuery('select#typeofrequire').val("<?php echo $typeofrequire;?>");
     jQuery('select#city').val("<?php echo $city;?>");
     jQuery('select#town').val("<?php echo $town;?>");
     jQuery('select#neigbourhood').val("<?php echo $neigbourhood;?>");

@@ -59,6 +59,7 @@ if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
 /////////////////// UPDATE //////////////////////
 if($objcms->update_img('requiries', $col, $val,'id', $_REQUEST['id'], $path, $field))
 {
+    //$res_fil = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE id=" . $_REQUEST['id']);
 	header('Location: '.$_SERVER['PHP_SELF'].'?msg=updated&e=1&id='.$_REQUEST['id']);
 }
 else
@@ -296,8 +297,8 @@ function upload_image($imagename,$prefix,$num)
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                 <select name="typeofrequiries" id="typeofrequiries">
                                     <option value="">-- Select One --</option>
-                                    <option value="Satilik">Satilik</option>
-                                    <option value="Kiralik">Kiralik</option>
+                                    <option value="34">Kiralık</option>
+                                    <option value="35">Satılık</option>
                                 </select>
                             </div>
                         </div>
@@ -307,7 +308,7 @@ function upload_image($imagename,$prefix,$num)
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                 <select name="estatetype" id="estatetype" class="medium gfield_select" tabindex="10" aria-required="true" aria-invalid="false">
                                     <option value="--Estate Type --">-- Estate Type --</option>
-                                    <option value="" selected="selected" class="gf_placeholder">Arsa Tipi Seçiniz</option>
+                                    <option value="14474" selected="selected" class="gf_placeholder">Arsa Tipi Seçiniz</option>
                                     <option value="14476">A-Lejantlı</option>
                                     <option value="14475">Ada</option>
                                     <option value="14477">Bağ &amp; Bahçe</option>
