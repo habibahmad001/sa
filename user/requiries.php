@@ -114,10 +114,10 @@ $message = $objcms->tep_draw_message("Data is deleted !");
                       <?php if(count($res) > 0) { $cont = 0; foreach($res as $v) { $cont = $cont+1;?>
                         <tr>
                           <td><?php echo $cont;?></td>
-                          <td><?php echo $v["adn"];?></td>
+                          <td><?php echo $v["name"];?></td>
                           <td><?php echo $v["email"];?></td>
-                          <td><?php echo $v["soy"];?></td>
-                          <td><?php echo $v["cept"];?></td>
+                          <td><?php echo $v["surname"];?></td>
+                          <td><?php echo $v["mobile"];?></td>
                           <td style="width:200px !important;">
                           		<a class="btn btn-app" href="editrequiries.php?e=1&id=<?php echo $v["id"];?>">
                                   <i class="fa fa-edit"></i> View/Edit
