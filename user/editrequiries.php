@@ -384,27 +384,30 @@ if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
                   </div>
 
 
-                    <?php print_r($res_fil);?>
+                    <?php //print_r($res_fil);?>
+                  <div class="title_left">
+                      <h3>Matched Records</h3>
+                  </div>
                   <div class="x_content">
 
                       <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap col-no-sort" cellspacing="0" width="100%">
                           <thead>
                           <tr>
                               <th>Sr #</th>
-                              <th>Email</th>
+                              <th>Title</th>
                               <th>M2</th>
                               <th>Price</th>
-                              <th>Estate Type</th>
+                              <th>Email</th>
                           </tr>
                           </thead>
                           <tbody>
                           <?php if(count($res_fil) > 0) { $cont = 0; foreach($res_fil as $v) { $cont = $cont+1;?>
                               <tr>
                                   <td><?php echo $cont;?></td>
-                                  <td><?php echo $v["emsal"];?></td>
+                                  <td><?php echo $v["title"];?></td>
                                   <td><?php echo $v["m2"];?></td>
                                   <td><?php echo $v["price"];?></td>
-                                  <td><?php echo $v["estatetype"];?></td>
+                                  <td><?php echo $v["emsal"];?></td>
                               </tr>
                           <?php } } else { ?>
                               <tr>
