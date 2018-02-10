@@ -58,7 +58,9 @@ if(!empty($_REQUEST['e']) and $_REQUEST['e'] == 1)
 /////////////////// UPDATE //////////////////////
 if($objcms->update_img('requiries', $col, $val,'id', $_REQUEST['id'], $path, $field))
 {
-	header('Location: '.$_SERVER['PHP_SELF'].'?msg=updated&e=1&id='.$_REQUEST['id']);
+    $res_fil = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE typeofrequire='" . $_REQUEST['typeofrequiries'] . "' and estatetype='" . $_REQUEST['estatetype'] . "' and city='" . $_REQUEST['city'] . "' and town='" . $_REQUEST['town'] ."' and neigbourhood='" . $_REQUEST['neigbourhood'] . "' and (minland <= " . $_REQUEST['m2'] ." AND " . $_REQUEST['m2'] . " <= maxland) and (minprice <= " . $_REQUEST['price'] ." AND " . $_REQUEST['price']." <= maxprice)");
+    //$res_fil = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE id=" . $_REQUEST['id']);
+    //header('Location: '.$_SERVER['PHP_SELF'].'?msg=updated&e=1&id='.$_REQUEST['id']);
 }
 else
 {header("Refresh:0");}
@@ -104,7 +106,8 @@ if(isset($_REQUEST['submit']) && $_REQUEST['e'] != 1)
         /////////////////// INSERT //////////////////////
 		if($ins_id = $objcms->insert_new_with_id('requiries',$col,$val))
 		{
-			header('Location: '.$_SERVER['PHP_SELF'].'?msg=inserted');
+            $res_fil = $objcms->SELECT_QUERY("SELECT * FROM realesteate WHERE typeofrequire='" . $_REQUEST['typeofrequiries'] . "' and estatetype='" . $_REQUEST['estatetype'] . "' and city='" . $_REQUEST['city'] . "' and town='" . $_REQUEST['town'] ."' and neigbourhood='" . $_REQUEST['neigbourhood'] . "' and (minland < " . $_REQUEST['m2'] ." AND " . $_REQUEST['m2'] . " < maxland) and (minprice < " . $_REQUEST['price'] ." AND " . $_REQUEST['price']." < maxprice)");
+            //header('Location: '.$_SERVER['PHP_SELF'].'?msg=inserted');
 		} else {
             $objcms->tep_draw_message("Request Failed.");
         }
@@ -504,6 +507,52 @@ if(isset($_REQUEST['vid']) && $_REQUEST['vid'] != "") {
 
                       </form>
                   </div>
+
+
+
+
+                    <?php //print_r($res_fil);?>
+                    <div class="title_left">
+                        <h3>Matched Records</h3>
+                    </div>
+                    <div class="x_content">
+
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap col-no-sort" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>Sr #</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Min. Price</th>
+                                <th>Max. Price</th>
+                                <th>Mobile #</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(count($res_fil) > 0) { $cont = 0; foreach($res_fil as $v) { $cont = $cont+1;?>
+                                <tr>
+                                    <td><?php echo $cont;?></td>
+                                    <td><?php echo $v["name"];?></td>
+                                    <td><?php echo $v["email"];?></td>
+                                    <td><?php echo $v["maxprice"];?></td>
+                                    <td><?php echo $v["minprice"];?></td>
+                                    <td><?php echo $v["mobile"];?></td>
+                                </tr>
+                            <?php } } else { ?>
+                                <tr>
+                                    <td colspan="6">No Client Found here !</td>
+                                </tr>
+                            <?php }?>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+
+
+
                 </div>
               </div>
             </div>
